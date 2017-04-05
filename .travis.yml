@@ -1,5 +1,8 @@
 sudo: false
 
+notifications:
+  email: false
+
 language: python
 
 python:
@@ -9,13 +12,8 @@ addons:
   apt:
     packages:
       - cython
-      - libgtk2.0-dev
-      - python-dateutil
+      - libhdf5-serial-dev
       - python-imaging
-      - python-matplotlib
-      - python-mysqldb
-      - python-pip
-      - python-scipy
 
 cache:
   apt: true
@@ -31,7 +29,4 @@ install:
   - pip install --editable git+https://github.com/CellProfiler/CellProfiler.git#egg=CellProfiler
 
 script:
-  - cd ExamplyFlyImages
-  - mkdir output
-  - ls -d -1 $PWD/*.TIF > files.txt
-  - cellprofiler -r -c -p ExampleFly.cppipe --file-list files.txt -o output
+  - ./ExampleFlyImages/run.sh

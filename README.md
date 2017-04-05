@@ -1,0 +1,2 @@
+# examples
+Example CellProfiler pipelines.

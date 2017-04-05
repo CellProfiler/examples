@@ -1,0 +1,33 @@
+sudo: false
+
+language: python
+
+python:
+  - 2.7
+
+addons:
+  apt:
+    packages:
+      - libhdf5-serial-dev
+      - python-dateutil
+      - python-imaging
+      - python-matplotlib
+      - python-pip
+      - python-scipy
+
+cache:
+  apt: true
+  directories:
+    - $HOME/.cache/pip
+
+install:
+  - pip install --upgrade pip wheel
+  - pip install --upgrade cython numpy scipy
+  - pip install joblib scikit-learn
+  - pip install --no-deps pyzmq==13.1.0
+  - pip install --editable git+https://github.com/h5py/h5py.git#egg=h5py
+  - pip install --editable git+https://github.com/CellProfiler/CellProfiler.git#egg=CellProfiler
+
+script:
+  - echo $PWD
+  - cellprofiler --version

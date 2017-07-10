@@ -1,8 +1,15 @@
 .PHONY: test
 
 test:
+	# ExampleCometAssay
+	cellprofiler -c -r -p ExampleCometAssay/ExampleCometAssay.cppipe -i ExampleCometAssay/images -o ExampleCometAssay/output
+
+	rm -rf ExampleCometAssay/output
+
 	# ExampleFly
-	ExampleFlyImages/run.sh
+	cellprofiler -c -r -p ExampleFly/ExampleFly.cppipe -i ExampleFly/images -o ExampleFly/output
+
+	rm -rf ExampleFly/output
 
 	# ExampleHuman
 	cellprofiler -c -r -p ExampleHuman/ExampleHuman.cppipe -i ExampleHuman/images -o ExampleHuman/output
@@ -13,8 +20,3 @@ test:
 	cellprofiler -c -r -p ExampleTumor/ExampleTumor.cppipe -i ExampleTumor/images -o ExampleTumor/output
 
 	rm -rf ExampleTumor/output
-
-	# ExampleCometAssay
-	cellprofiler -c -r -p ExampleCometAssay/ExampleCometAssay.cppipe -i ExampleCometAssay/images -o ExampleCometAssay/output
-
-	rm -rf ExampleCometAssay/output

@@ -13,3 +13,8 @@ test:
 	cellprofiler -c -r -p ExampleTumor/ExampleTumor.cppipe -i ExampleTumor/images -o ExampleTumor/output
 
 	rm -rf ExampleTumor/output
+
+	# ExampleCometAssay
+	cellprofiler -c -r -p ExampleCometAssay/ExampleCometAssay.cppipe -i ExampleCometAssay/images -o ExampleCometAssay/output
+
+	rm -rf ExampleCometAssay/output

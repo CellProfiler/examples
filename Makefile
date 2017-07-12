@@ -16,6 +16,11 @@ test:
 
 	rm -rf ExampleHuman/output
 
+	# ExamplePercentPositive
+	cellprofiler -c -r -p ExamplePercentPositive/ExamplePercentPositive.cppipe -i ExamplePercentPositive/images -o ExamplePercentPositive/output
+
+	rm -rf ExamplePercentPositive/output
+
 	# ExampleTumor
 	cellprofiler -c -r -p ExampleTumor/ExampleTumor.cppipe -i ExampleTumor/images -o ExampleTumor/output
 

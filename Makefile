@@ -25,3 +25,8 @@ test:
 	cellprofiler -c -r -p ExampleTumor/ExampleTumor.cppipe -i ExampleTumor/images -o ExampleTumor/output
 
 	rm -rf ExampleTumor/output
+
+	# ExampleYeastColonies
+	cellprofiler -c -r -p ExampleYeastColonies/ExampleYeastColonies.cppipe -i ExampleYeastColonies/images -o ExampleYeastColonies/output
+
+	rm -rf ExampleYeastColonies/output

@@ -30,3 +30,8 @@ test:
 	cellprofiler -c -r -p ExampleYeastColonies/ExampleYeastColonies.cppipe -i ExampleYeastColonies/images -o ExampleYeastColonies/output
 
 	rm -rf ExampleYeastColonies/output
+
+	# ExampleYeastPatches
+	cellprofiler -c -r -p ExampleYeastPatches/ExampleYeastPatches.cppipe -i ExampleYeastPatches/images -o ExampleYeastPatches/output
+
+	rm -rf ExampleYeastPatches/output

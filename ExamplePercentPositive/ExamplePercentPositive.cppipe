@@ -2,7 +2,7 @@ CellProfiler Pipeline: http://www.cellprofiler.org
 Version:3
 DateRevision:300
 GitHash:
-ModuleCount:12
+ModuleCount:14
 HasImagePlaneDetails:False
 
 Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
@@ -61,54 +61,19 @@ Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_win
     grouping metadata count:1
     Metadata category:None
 
-IdentifyPrimaryObjects:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'The dna channel, e.g. DAPI, is perfect for segmenting individual cells. Given that these cells are well spaced, declumping cells by shape is effective.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Input:OrigBlue
     Object:Nuclei
     Typical diameter of objects, in pixel units (Min,Max):8,80
     Discard objects outside the diameter range?:Yes
     Discard objects touching the border of the image?:Yes
-    Method to distinguish clumped objects:Intensity
+    Method to distinguish clumped objects:Shape
     Method to draw dividing lines between clumped objects:Intensity
     Size of smoothing filter:10
     Suppress local maxima that are closer than this minimum allowed distance:7.0
     Speed up by using lower-resolution image to find local maxima?:Yes
     Fill holes in identified objects?:After declumping only
     Automatically calculate size of smoothing filter for declumping?:Yes
-    Automatically calculate minimum allowed distance between local maxima?:Yes
-    Handling of objects if excessive number of objects identified:Continue
-    Maximum number of objects:500
-    Use advanced settings?:No
-    Threshold setting version:10
-    Threshold strategy:Global
-    Thresholding method:Minimum cross entropy
-    Threshold smoothing scale:1.3488
-    Threshold correction factor:1.0
-    Lower and upper bounds on threshold:0.0,1.0
-    Manual threshold:0.0
-    Select the measurement to threshold with:None
-    Two-class or three-class thresholding?:Two classes
-    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
-    Size of adaptive window:50
-    Lower outlier fraction:0.05
-    Upper outlier fraction:0.05
-    Averaging method:Mean
-    Variance method:Standard deviation
-    # of deviations:2.0
-    Thresholding method:Otsu
-
-IdentifyPrimaryObjects:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
-    Input:OrigGreen
-    Object:PH3
-    Typical diameter of objects, in pixel units (Min,Max):5,20
-    Discard objects outside the diameter range?:Yes
-    Discard objects touching the border of the image?:Yes
-    Method to distinguish clumped objects:Intensity
-    Method to draw dividing lines between clumped objects:Intensity
-    Size of smoothing filter:10
-    Suppress local maxima that are closer than this minimum allowed distance:7.0
-    Speed up by using lower-resolution image to find local maxima?:Yes
-    Fill holes in identified objects?:After declumping only
-    Automatically calculate size of smoothing filter for declumping?:No
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Handling of objects if excessive number of objects identified:Continue
     Maximum number of objects:500
@@ -131,7 +96,42 @@ IdentifyPrimaryObjects:[module_num:6|svn_version:\'Unknown\'|variable_revision_n
     # of deviations:2.0
     Thresholding method:Otsu
 
-RelateObjects:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'The phosphorylated histone probe is a marker for detecting mitotic cells. By segmenting this channel, a threshold is automatically chosen that identifies the pixels that are "positive" for the PH3 probe. This method will yield inconsistent results if there are no mitotic cells in view, so a minimum threshold value is chosen. This minimum is chosen hueristically, based upon the threshold chosen by this module, e.g. half the chosen threshold.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Input:OrigGreen
+    Object:PH3
+    Typical diameter of objects, in pixel units (Min,Max):5,20
+    Discard objects outside the diameter range?:Yes
+    Discard objects touching the border of the image?:Yes
+    Method to distinguish clumped objects:Intensity
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Fill holes in identified objects?:After declumping only
+    Automatically calculate size of smoothing filter for declumping?:No
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Use advanced settings?:Yes
+    Threshold setting version:10
+    Threshold strategy:Global
+    Thresholding method:Minimum cross entropy
+    Threshold smoothing scale:1.3488
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.05,1.0
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Two classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+RelateObjects:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'The ph3 probe and dna stain overlap with each other, so this co-localization can be used to classify cells. This is relatioship is ennumerated by the RelateObjects module and the labels from one set of objects is mapped into another set of objects.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:Nuclei
     Child objects:PH3
     Calculate child-parent distances?:None
@@ -139,13 +139,7 @@ RelateObjects:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|s
     Calculate distances to other parents?:No
     Parent name:None
 
-MeasureObjectIntensity:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
-    Hidden:2
-    Select an image to measure:OrigGreen
-    Select an image to measure:OrigBlue
-    Select objects to measure:Nuclei
-
-FilterObjects:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:8|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+FilterObjects:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:8|show_window:True|notes:\x5B\'After the relationship between objects has been ennumerated, the FilterObjects module can transform this relationship into a binary relationship, i.e. 0 if there is no PH3 and 1 if there is PH3.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Input:Nuclei
     Object:PH3PosNuclei
     Select the filtering mode:Measurements
@@ -163,12 +157,28 @@ FilterObjects:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:8|s
     Filter using a maximum measurement value?:No
     Maximum value:1.0
 
-DisplayDataOnImage:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:6|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+MeasureObjectIntensity:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'In addition to colocalization, the intensity of the PH3 probe can be used to classify cells. The intensity can be measured within each nuclei object.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Hidden:2
+    Select an image to measure:OrigGreen
+    Select an image to measure:OrigBlue
+    Select objects to measure:Nuclei
+
+OverlayOutlines:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'The intensity measurements can be exported into a spreadsheet, but sometimes a useful way to process the measurements is to see them overlayed on top of the objects of interest, in this the nuclei.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Display outlines on a blank image?:No
+    Select image on which to display outlines:OrigGreen
+    Name the output image:OrigGreenOverlay
+    Outline display mode:Color
+    Select method to determine brightness of outlines:Max of image
+    How to outline:Inner
+    Select outline color:#00FF40
+    Select objects to display:Nuclei
+
+DisplayDataOnImage:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:6|show_window:True|notes:\x5B"We\'ll choose a threshold for the intensity that determines if a cell is mitotic or not. The MaxIntensity is an effective measurement, since the probe itself is so specific."\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Display object or image measurements?:Object
     Select the input objects:Nuclei
-    Measurement to display:Intensity_MedianIntensity_OrigGreen
-    Select the image on which to display the measurements:OrigGreen
-    Text color:red
+    Measurement to display:Intensity_MaxIntensity_OrigGreen
+    Select the image on which to display the measurements:OrigGreenOverlay
+    Text color:magenta
     Name the output image that has the measurements displayed:DisplayImage
     Font size (points):10
     Number of decimals:2
@@ -180,7 +190,38 @@ DisplayDataOnImage:[module_num:10|svn_version:\'Unknown\'|variable_revision_numb
     Color map scale:Use this image\'s measurement range
     Color map range:0.0,1.0
 
-CalculateMath:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:False|wants_pause:False]
+ClassifyObjects:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'From the data displayed image, the value of 0.2 was chosen as an appropriate threshold for determining PH3+ cells. This approach contrasts with the colocalization method to classify cells that was done by the RelateObjects module. The 0.2 threshold parallels the threshold automatically chosen by the IdentifyPrimaryObjects module on the PH3 image.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Make each classification decision on how many measurements?:Single measurement
+    Hidden:1
+    Select the object to be classified:Nuclei
+    Select the measurement to classify by:Intensity_MaxIntensity_OrigGreen
+    Select bin spacing:Custom-defined bins
+    Number of bins:3
+    Lower threshold:0.0
+    Use a bin for objects below the threshold?:Yes
+    Upper threshold:1.0
+    Use a bin for objects above the threshold?:Yes
+    Enter the custom thresholds separating the values between bins:0.2
+    Give each bin a name?:Yes
+    Enter the bin names separated by commas:PH3Neg,PH3Pos
+    Retain an image of the classified objects?:No
+    Name the output image:ClassifiedNuclei
+    Select the object name:None
+    Select the first measurement:None
+    Method to select the cutoff:Mean
+    Enter the cutoff value:0.5
+    Select the second measurement:None
+    Method to select the cutoff:Mean
+    Enter the cutoff value:0.5
+    Use custom names for the bins?:No
+    Enter the low-low bin name:low_low
+    Enter the low-high bin name:low_high
+    Enter the high-low bin name:high_low
+    Enter the high-high bin name:high_high
+    Retain an image of the classified objects?:No
+    Enter the image name:None
+
+CalculateMath:[module_num:13|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'The module is for convenience. The percentage of cells positive for PH3 could be calculated from the exported spreadsheet. However, it is a simple enough metric that it can be directly calculated in the pipeline.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:False|wants_pause:True]
     Name the output measurement:PercentPositive
     Operation:Divide
     Select the numerator measurement type:Image
@@ -202,7 +243,7 @@ CalculateMath:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:2|
     Constrain the result to an upper bound?:No
     Enter the upper bound:1.0
 
-ExportToSpreadsheet:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+ExportToSpreadsheet:[module_num:14|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
     Limit output to a size that is allowed in Excel?:No
@@ -220,7 +261,7 @@ ExportToSpreadsheet:[module_num:12|svn_version:\'Unknown\'|variable_revision_num
     Representation of Nan/Inf:NaN
     Add a prefix to file names?:No
     Filename prefix:MyExpt_
-    Overwrite existing files without warning?:No
+    Overwrite existing files without warning?:Yes
     Data to export:Do not use
     Combine these object measurements with those of the previous object?:No
     File name:DATA.csv

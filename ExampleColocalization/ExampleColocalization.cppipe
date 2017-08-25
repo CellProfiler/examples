@@ -1,0 +1,382 @@
+CellProfiler Pipeline: http://www.cellprofiler.org
+Version:3
+DateRevision:300
+GitHash:
+ModuleCount:23
+HasImagePlaneDetails:False
+
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    :
+    Filter images?:Images only
+    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "\x5B\\\\\\\\\\\\\\\\/\x5D\\\\\\\\.")
+
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Extract metadata?:No
+    Metadata data type:Text
+    Metadata types:{}
+    Extraction method count:1
+    Metadata extraction method:Extract from file/folder names
+    Metadata source:File name
+    Regular expression:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)_w(?P<ChannelNumber>\x5B0-9\x5D)
+    Regular expression:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
+    Extract metadata from:All images
+    Select the filtering criteria:and (file does contain "")
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
+    Use case insensitive matching?:No
+
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:7|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\', \'\\xe2\\x80\\x94\', \'Load each channel (or stain) as a separate image.  If you have a color image composed of different stains, you\\xe2\\x80\\x99ll need to specify the image type as \\xe2\\x80\\x98Color image\\xe2\\x80\\x99 and then use a ColorToGray module in the Analysis modula panel to separate the incoming image into its component channels.\', \'\', \'In the example pipeline, we call the two images OrigStain1 and OrigStain2.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Assign a name to:Images matching rules
+    Select the image type:Grayscale image
+    Name to assign these images:DNA
+    Match metadata:\x5B\x5D
+    Image set matching method:Order
+    Set intensity range from:Image metadata
+    Assignments count:2
+    Single images count:0
+    Maximum intensity:255.0
+    Process as 3D:No
+    x:1.0
+    y:1.0
+    z:1.0
+    Select the rule criteria:and (file does contain "N_R")
+    Name to assign these images:OrigStain1
+    Name to assign these objects:Cell
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedOutlines
+    Maximum intensity:255.0
+    Select the rule criteria:and (file does contain "N_G")
+    Name to assign these images:OrigStain2
+    Name to assign these objects:Cell
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Retain outlines of loaded objects?:No
+    Name the outline image:LoadedOutlines
+    Maximum intensity:255.0
+
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Do you want to group your images?:No
+    grouping metadata count:1
+    Metadata category:None
+
+CorrectIlluminationCalculate:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'Perform illumination correction using the Regular method and polynomial fitting to create a illumination correction function for the first image. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:OrigStain1
+    Name the output image:IllumStain1
+    Select how the illumination function is calculated:Regular
+    Dilate objects in the final averaged image?:No
+    Dilation radius:1
+    Block size:60
+    Rescale the illumination function?:Yes
+    Calculate function for each image individually, or based on all images?:Each
+    Smoothing method:Fit Polynomial
+    Method to calculate smoothing filter size:Automatic
+    Approximate object size:10
+    Smoothing filter size:10
+    Retain the averaged image?:No
+    Name the averaged image:IllumBlueAvg
+    Retain the dilated image?:No
+    Name the dilated image:IllumBlueDilated
+    Automatically calculate spline parameters?:Yes
+    Background mode:auto
+    Number of spline points:5
+    Background threshold:2.0
+    Image resampling factor:2.0
+    Maximum number of iterations:40
+    Residual value for convergence:0.001
+
+CorrectIlluminationCalculate:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'Perform illumination correction using the Regular method and polynomial fitting to create a illumination correction function for the second image. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:OrigStain2
+    Name the output image:IllumStain2
+    Select how the illumination function is calculated:Regular
+    Dilate objects in the final averaged image?:No
+    Dilation radius:1
+    Block size:60
+    Rescale the illumination function?:Yes
+    Calculate function for each image individually, or based on all images?:Each
+    Smoothing method:Fit Polynomial
+    Method to calculate smoothing filter size:Automatic
+    Approximate object size:10
+    Smoothing filter size:10
+    Retain the averaged image?:No
+    Name the averaged image:IllumBlueAvg
+    Retain the dilated image?:No
+    Name the dilated image:IllumBlueDilated
+    Automatically calculate spline parameters?:Yes
+    Background mode:auto
+    Number of spline points:5
+    Background threshold:2.0
+    Image resampling factor:2.0
+    Maximum number of iterations:40
+    Residual value for convergence:0.001
+
+CorrectIlluminationApply:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Apply the illumination function to the original images and examine the result.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:OrigStain1
+    Name the output image:CorrectedStain1
+    Select the illumination function:IllumStain1
+    Select how the illumination function is applied:Divide
+    Select the input image:OrigStain2
+    Name the output image:CorrectedStain2
+    Select the illumination function:IllumStain2
+    Select how the illumination function is applied:Divide
+
+Align:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'(Optional) Since accurate colocalization requires accurate positioning of the features in both images, it is sometimes worth using this module to align the images.\', \'\', \'If aligning the images, it is important to remember that there needs to be sufficient overlap in image features, other than the features suspected of overlapping, in order to align them. For example, attempting to align two images in which there is little to no colocalization will probably result in poor alignment. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the alignment method:Mutual Information
+    Crop mode:Keep size
+    Select the first input image:OrigStain1
+    Name the first output image:Stain1
+    Select the second input image:OrigStain2
+    Name the second output image:Stain2
+
+MeasureCorrelation:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'The Measure Correlation module measures both the correlation of Stain1 and Stain2 across the entire image.  The overall image correlation can give a general sense of how colocalized the features within the images are.\', \'\', \'The correlation measurement is the normalized covariance (covariance divided by the product of standard deviation of pixels in each image). Correlation ranges from -1 (complete inverse correlation) to +1 (complete correlation). Thus, the closer to one the correlation measurement is, the more correlated the two images are and the higher the amount of colocalization.\', \'\', \'Note that if you are not interested in object-based calculations, you could stop here and remove the modules up to the ExportToSpreadsheet module.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Hidden:2
+    Hidden:1
+    Select an image to measure:Stain1
+    Select an image to measure:Stain2
+    Set threshold as percentage of maximum intensity for the images:15.0
+    Select where to measure correlation:Across entire image
+    Select an object to measure:None
+
+IdentifyPrimaryObjects:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'Similarly, correlation measurements for individual objects can also be obtained. However, to determine colocalization on per-object basis, the objects within the image must be identified.  We first segment the image features into objects, then make comparisons between the individual objects in the channels.\', \'\', \'The input image is selected as Stain1, with the output objects named Objects1. The typical diameter is set as \x5B3,15\x5D for the min/max size we expect the objects to be. We chose to discard small and large objects, which tend to be spurious, and discard those objects at the border because we will be making area-based measurements.\', \'\', \'The chosen thresholding method can greatly affect segmentation.  Here, you want to select a method that will accurately identify the protein of interest as foreground.  Depending on the background level and properties of the stain, you may need to try several different methods and corresponding settings to obtain good segmentation.  Please see the help for IdentifyPrimaryObjects for more information on the thresholding methods available.\', \'\', \'Settings to distinguish clumped objects are of importance for per-object measures of co-localization.  For example, if you wish to measure co-localization only in the nuclei or cytoplasm, each sub cellular compartment must be properly segmented to provide an accurate measurement.  You may need to adjust various settings to get good segmentation of clumpy nuclei. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Input:Stain1
+    Object:Objects1
+    Typical diameter of objects, in pixel units (Min,Max):3,15
+    Discard objects outside the diameter range?:Yes
+    Discard objects touching the border of the image?:Yes
+    Method to distinguish clumped objects:Intensity
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Fill holes in identified objects?:After both thresholding and declumping
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Use advanced settings?:Yes
+    Threshold setting version:10
+    Threshold strategy:Global
+    Thresholding method:Otsu
+    Threshold smoothing scale:1.3488
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Three classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Background
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+IdentifyPrimaryObjects:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'The settings are identical to the first IdentifyPrimaryObjects, but here we identify the nuclei from Stain 2.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Input:Stain2
+    Object:Objects2
+    Typical diameter of objects, in pixel units (Min,Max):3,15
+    Discard objects outside the diameter range?:Yes
+    Discard objects touching the border of the image?:Yes
+    Method to distinguish clumped objects:Intensity
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Fill holes in identified objects?:After both thresholding and declumping
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Use advanced settings?:Yes
+    Threshold setting version:10
+    Threshold strategy:Global
+    Thresholding method:Otsu
+    Threshold smoothing scale:1.3488
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Three classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Background
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+RelateObjects:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'If we want to consider objects which touch or overlap each other are considered to be colocalized, this module establishes a \\xe2\\x80\\x98parent-child\\xe2\\x80\\x99 relationship between two sets of objects. A \\xe2\\x80\\x98parent\\xe2\\x80\\x99 object is one that touches, overlaps or encloses a \\xe2\\x80\\x98child\\xe2\\x80\\x99 object. Object2 objects that touch or overlap with an Object2 object are considered to be colocalized and will be assigned as a parent to a corresponding child.  All others have no children and are labeled accordingly.\', \'\', \'In addition, the distance between object centroids may also be obtained with this module by enabling the \\xe2\\x80\\x98Calculate distances?\\xe2\\x80\\x99\\xe2\\x80\\x99 setting.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Parent objects:Objects1
+    Child objects:Objects2
+    Calculate child-parent distances?:Centroid
+    Calculate per-parent means for all child measurements?:No
+    Calculate distances to other parents?:No
+    Parent name:None
+
+ExpandOrShrinkObjects:[module_num:13|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\'If we only want to consider objects whose centroids are N pixels apart, this module shrinks the objects identified in the Stain1 image to a point and names the resultant points ShrunkenObjects1. The second ExpandOrShrinkObjects does the same for Stain2.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input objects:Objects1
+    Name the output objects:ShrunkenObjects1
+    Select the operation:Shrink objects to a point
+    Number of pixels by which to expand or shrink:1
+    Fill holes in objects so that all objects shrink to a single point?:No
+    Retain the outlines of the identified objects?:No
+    Name the outline image:ShrunkenNucleiOutlines
+
+ExpandOrShrinkObjects:[module_num:14|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\'If we only want to consider objects whose centroids are N pixels apart, this module shrinks the objects identified in the Stain1 image to a point and names the resultant points ShrunkenObjects1. The second ExpandOrShrinkObjects does the same for Stain2.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input objects:Objects2
+    Name the output objects:ShrunkenObjects2
+    Select the operation:Shrink objects to a point
+    Number of pixels by which to expand or shrink:1
+    Fill holes in objects so that all objects shrink to a single point?:No
+    Retain the outlines of the identified objects?:No
+    Name the outline image:ShrunkenNucleiOutlines
+
+ExpandOrShrinkObjects:[module_num:15|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\'We now expand the previously shrunken point objects by 2 pixels, i.e., two pixels are added to either side of the single-pixel object to create new objects which are 5 pixels across, as shown in Fig. 2. These new objects are named ExpandedObjects1 and ExpandedObjects2.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input objects:ShrunkenObjects1
+    Name the output objects:ExpandedObjects1
+    Select the operation:Expand objects by a specified number of pixels
+    Number of pixels by which to expand or shrink:2
+    Fill holes in objects so that all objects shrink to a single point?:No
+    Retain the outlines of the identified objects?:No
+    Name the outline image:ShrunkenNucleiOutlines
+
+ExpandOrShrinkObjects:[module_num:16|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\'We now expand the previously shrunken point objects by 2 pixels, i.e., two pixels are added to either side of the single-pixel object to create new objects which are 5 pixels across, as shown in Fig. 2. These new objects are named ExpandedObjects1 and ExpandedObjects2.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input objects:ShrunkenObjects2
+    Name the output objects:ExpandedObjects2
+    Select the operation:Expand objects by a specified number of pixels
+    Number of pixels by which to expand or shrink:2
+    Fill holes in objects so that all objects shrink to a single point?:No
+    Retain the outlines of the identified objects?:No
+    Name the outline image:ShrunkenNucleiOutlines
+
+RelateObjects:[module_num:17|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'In this case, ExpandedObjects1 are assigned to be parents, with ExpandedObject2 as children. Therefore, objects in ExpandedObjects1 which have children and 2 pixels apart or less are colocalized with objects in ExpandedObjects2.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Parent objects:ExpandedObjects1
+    Child objects:ExpandedObjects2
+    Calculate child-parent distances?:None
+    Calculate per-parent means for all child measurements?:No
+    Calculate distances to other parents?:No
+    Parent name:None
+
+ClassifyObjects:[module_num:18|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'The ClassifyObjects module categorizes objects into bins associated with a particular measurement.  In this case, the chosen measurement is the child count for Objects1. The value 0.5 is chosen as the measurement since we want to distinguish between colocalized objects with children (child count of 1 or greater) versus those without (child count of 0). \', \'\', \'The result of this module is an absolute count and percentage of objects that fall into the colocalized/non-colocalized bins, and an annotation to each Objects1 object as to whether it falls into a particular bin or not. This approach works well if you just want a yes/no readout per object.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Make each classification decision on how many measurements?:Single measurement
+    Hidden:1
+    Select the object to be classified:Objects1
+    Select the measurement to classify by:Children_Objects2_Count
+    Select bin spacing:Custom-defined bins
+    Number of bins:3
+    Lower threshold:0.0
+    Use a bin for objects below the threshold?:Yes
+    Upper threshold:1.0
+    Use a bin for objects above the threshold?:Yes
+    Enter the custom thresholds separating the values between bins:0.5
+    Give each bin a name?:Yes
+    Enter the bin names separated by commas:NotColocalized,Colocalized
+    Retain an image of the classified objects?:No
+    Name the output image:ClassifiedNuclei
+    Select the object name:None
+    Select the first measurement:None
+    Method to select the cutoff:Mean
+    Enter the cutoff value:0.5
+    Select the second measurement:None
+    Method to select the cutoff:Mean
+    Enter the cutoff value:0.5
+    Use custom names for the bins?:No
+    Enter the low-low bin name:low_low
+    Enter the low-high bin name:low_high
+    Enter the high-low bin name:high_low
+    Enter the high-high bin name:high_high
+    Retain an image of the classified objects?:No
+    Enter the image name:None
+
+FilterObjects:[module_num:19|svn_version:\'Unknown\'|variable_revision_number:8|show_window:True|notes:\x5B\'The FilterObjects module effectively does the same operation as Classify Objects, but rather than simply assigning a label to each object, FilterObjects removes all objects that do not pass a criterion. Using the same choice of measurement and cutoff as in Classify Objects, only those Objects1 objects which fall into the co-localized bin are retained. This feature is useful if you want to perform additional operations or measurements on the remaining objects. \', \'\', \'These two modules can also be used to perform the same operations on the ExpandedObjects1 object set.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Input:Objects1
+    Object:ColocalizedObjects
+    Select the filtering mode:Measurements
+    Select the filtering method:Limits
+    Select the objects that contain the filtered objects:None
+    Rules file location:Elsewhere...\x7C
+    Rules file name:rules.txt
+    Class number:1
+    Measurement count:1
+    Additional object count:0
+    Assign overlapping child to:Both parents
+    Select the measurement to filter by:Children_Objects2_Count
+    Filter using a minimum measurement value?:Yes
+    Minimum value:1
+    Filter using a maximum measurement value?:No
+    Maximum value:1.0
+
+MaskObjects:[module_num:20|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'This module masks (i.e., \\xe2\\x80\\x98hides\\xe2\\x80\\x99 from consideration) the pixels of the Objects1 object set which are in common with the Objects2 object set. The result of this operation is the colocalized area as a new object set, named ColocalizedRegions \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select objects to be masked:Objects1
+    Name the masked objects:ColocalizedRegion
+    Mask using a region defined by other objects or by binary image?:Objects
+    Select the masking object:Objects2
+    Select the masking image:None
+    Handling of objects that are partially masked:Keep overlapping region
+    Fraction of object that must overlap:0.5
+    Numbering of resulting objects:Renumber
+    Retain outlines of the resulting objects?:No
+    Name the outline image:MaskedOutlines
+    Invert the mask?:No
+
+MeasureImageAreaOccupied:[module_num:21|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'The MeasureImageAreaOccupied module measure various statistics associated with the area taken up by a feature in an image. In this case, we are concerned with Objects1 and ColocalizedRegion. The module counts all the pixels occupied by an given object set and adds them together for the total area occupied by each stained object\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Hidden:2
+    Measure the area occupied in a binary image, or in objects?:Objects
+    Select objects to measure:Objects1
+    Retain a binary image of the object regions?:No
+    Name the output binary image:Stain
+    Select a binary image to measure:None
+    Measure the area occupied in a binary image, or in objects?:Objects
+    Select objects to measure:ColocalizedRegion
+    Retain a binary image of the object regions?:No
+    Name the output binary image:Stain
+    Select a binary image to measure:None
+
+CalculateMath:[module_num:22|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'We divide the area occupied by ColocalizedRegion by the area occupied by Objects1 to get a per-image fraction.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Name the output measurement:Stain1Colocalized
+    Operation:Divide
+    Select the numerator measurement type:Image
+    Select the numerator objects:None
+    Select the numerator measurement:AreaOccupied_AreaOccupied_ColocalizedRegion
+    Multiply the above operand by:1.0
+    Raise the power of above operand by:1.0
+    Select the denominator measurement type:Image
+    Select the denominator objects:None
+    Select the denominator measurement:AreaOccupied_AreaOccupied_Objects1
+    Multiply the above operand by:1.0
+    Raise the power of above operand by:1.0
+    Take log10 of result?:No
+    Multiply the result by:1.0
+    Raise the power of result by:1.0
+    Add to the result:0.0
+    Constrain the result to a lower bound?:No
+    Enter the lower bound:0.0
+    Constrain the result to an upper bound?:No
+    Enter the upper bound:1.0
+
+ExportToSpreadsheet:[module_num:23|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\'This module is used to export the full set of measurements obtained by the pipeline. Measurements such as object counts, colocalization percentages and area fractions are saved to a per-image file (that is, one value per image); measurements such as colocalized/non-colocalized status and centroid distances are saved to a per-object file (one value per object).\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the column delimiter:Comma (",")
+    Add image metadata columns to your object data file?:No
+    Limit output to a size that is allowed in Excel?:No
+    Select the measurements to export:No
+    Calculate the per-image mean values for object measurements?:No
+    Calculate the per-image median values for object measurements?:No
+    Calculate the per-image standard deviation values for object measurements?:No
+    Output file location:Default Output Folder\x7C
+    Create a GenePattern GCT file?:No
+    Select source of sample row name:Metadata
+    Select the image to use as the identifier:None
+    Select the metadata to use as the identifier:None
+    Export all measurement types?:No
+    :
+    Representation of Nan/Inf:NaN
+    Add a prefix to file names?:No
+    Filename prefix:MyExpt_
+    Overwrite existing files without warning?:Yes
+    Data to export:Image
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes

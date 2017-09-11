@@ -6,6 +6,7 @@ addons:
   apt: true
   directories: $HOME/.cache/pip
 dist: trusty
+after_script: make clean
 env:
   - LC_ALL="en_US.UTF-8" CP_MYSQL_TEST_HOST="127.0.0.1" CP_MYSQL_TEST_USER="root" CP_MYSQL_TEST_PASSWORD=""
 install:

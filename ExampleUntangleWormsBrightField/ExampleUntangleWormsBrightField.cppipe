@@ -1,0 +1,382 @@
+CellProfiler Pipeline: http://www.cellprofiler.org
+Version:3
+DateRevision:300
+GitHash:
+ModuleCount:22
+HasImagePlaneDetails:False
+
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    :
+    Filter images?:Images only
+    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "\x5B\\\\\\\\\\\\\\\\/\x5D\\\\\\\\.")
+
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Extract metadata?:No
+    Metadata data type:Text
+    Metadata types:{}
+    Extraction method count:1
+    Metadata extraction method:Extract from file/folder names
+    Metadata source:File name
+    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)_w(?P<ChannelNumber>\x5B0-9\x5D)
+    Regular expression to extract from folder name:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
+    Extract metadata from:All images
+    Select the filtering criteria:and (file does contain "")
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
+    Use case insensitive matching?:No
+
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:8|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\', \'\\xe2\\x80\\x94\', \'Load the original RGB image.  Here we use text-exact match to find all files with the .png extension (there are two sample images provided).\', \'\', \'For more images from this image set, go to the BBBC (www.broadinstitute.org/bbbc).\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Assign a name to:Images matching rules
+    Select the image type:Grayscale image
+    Name to assign these images:DNA
+    Match metadata:\x5B\x5D
+    Image set matching method:Order
+    Set intensity range from:Image metadata
+    Assignments count:1
+    Single images count:0
+    Maximum intensity:255.0
+    Process as 3D:No
+    x:1.0
+    y:1.0
+    z:1.0
+    Select the rule criteria:and (file does contain ".png")
+    Name to assign these images:RawData
+    Name to assign these objects:Cell
+    Select the image type:Color image
+    Set intensity range from:Image metadata
+    Maximum intensity:255.0
+
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Do you want to group your images?:No
+    grouping metadata count:1
+    Metadata category:None
+
+ColorToGray:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Convert the image from RGB to grayscale. This image will be used for detecting the worms. No need to change parameters.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:RawData
+    Conversion method:Combine
+    Image type:RGB
+    Name the output image:CombinedGray
+    Relative weight of the red channel:1.0
+    Relative weight of the green channel:1.0
+    Relative weight of the blue channel:1.0
+    Convert red to gray?:Yes
+    Name the output image:OrigRed
+    Convert green to gray?:Yes
+    Name the output image:OrigGreen
+    Convert blue to gray?:Yes
+    Name the output image:OrigBlue
+    Convert hue to gray?:Yes
+    Name the output image:OrigHue
+    Convert saturation to gray?:Yes
+    Name the output image:OrigSaturation
+    Convert value to gray?:Yes
+    Name the output image:OrigValue
+    Channel count:1
+    Channel number:Red\x3A 1
+    Relative weight of the channel:1.0
+    Image name:Channel1
+
+CorrectIlluminationCalculate:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'Illumination correction evens out the background of the image.  We create an approximation of the background pattern of illumination including well edges using the convex hull function. This assumes that the edges of the image are darker than the center. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:CombinedGray
+    Name the output image:BackgroundIllumination
+    Select how the illumination function is calculated:Regular
+    Dilate objects in the final averaged image?:No
+    Dilation radius:1
+    Block size:60
+    Rescale the illumination function?:Yes
+    Calculate function for each image individually, or based on all images?:Each
+    Smoothing method:Convex Hull
+    Method to calculate smoothing filter size:Automatic
+    Approximate object size:10
+    Smoothing filter size:10
+    Retain the averaged image?:No
+    Name the averaged image:IllumBlueAvg
+    Retain the dilated image?:No
+    Name the dilated image:IllumBlueDilated
+    Automatically calculate spline parameters?:Yes
+    Background mode:auto
+    Number of spline points:5
+    Background threshold:2.0
+    Image resampling factor:2.0
+    Maximum number of iterations:40
+    Residual value for convergence:0.001
+
+CorrectIlluminationApply:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'We apply the illumination function in this step to remove illumination variation from the image.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:CombinedGray
+    Name the output image:BgCorrectedWorms
+    Select the illumination function:BackgroundIllumination
+    Select how the illumination function is applied:Divide
+
+ImageMath:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'In this step, we manipulate the colors of the images for a later filtering step.  \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Operation:Invert
+    Raise the power of the result by:1.0
+    Multiply the result by:1.0
+    Add to result:0.0
+    Set values less than 0 equal to 0?:Yes
+    Set values greater than 1 equal to 1?:Yes
+    Ignore the image masks?:No
+    Name the output image:WormsImage
+    Image or measurement?:Image
+    Select the first image:BgCorrectedWorms
+    Multiply the first image by:1.0
+    Measurement:
+    Image or measurement?:Image
+    Select the second image:
+    Multiply the second image by:1.0
+    Measurement:
+
+Threshold:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:10|show_window:True|notes:\x5B\'The background correction does not always succeed n removing shadows close to the well edge. Use the calculated background to find the well edges, and remove them in the following two steps.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:BackgroundIllumination
+    Name the output image:WellContent
+    Threshold strategy:Global
+    Thresholding method:Otsu
+    Threshold smoothing scale:0.0
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Two classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+Erosion:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:WellContent
+    Name the output image:WellContentEroded
+    Structuring element:disk,5
+
+Crop:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:WormsImage
+    Name the output image:CropedWormsImage
+    Select the cropping shape:Image
+    Select the cropping method:Coordinates
+    Apply which cycle\'s cropping pattern?:Every
+    Left and right rectangle positions:0,end
+    Top and bottom rectangle positions:0,end
+    Coordinates of ellipse center:500,500
+    Ellipse radius, X direction:400
+    Ellipse radius, Y direction:200
+    Remove empty rows and columns?:No
+    Select the masking image:WellContentEroded
+    Select the image with a cropping mask:None
+    Select the objects:None
+
+IdentifyPrimaryObjects:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'The first approximation of worms that we find, from the corrected image of worms only, is of large worm objects, where worms are touching.  We find otsu adaptive works best for finding worms of varying intensity.  If the worms are not being picked up well, you may adjust the threshold correction factor.  The typical diameter  of objects (wich is in fact the diameter of a disc with the same area as the object)  is set so the min is about the size of the smallest worm you would like found and the largest number is arbitrarily large- since we want to find all touching worms regardless of cluster size.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:CropedWormsImage
+    Name the primary objects to be identified:WormObjects
+    Typical diameter of objects, in pixel units (Min,Max):15,40000
+    Discard objects outside the diameter range?:Yes
+    Discard objects touching the border of the image?:No
+    Method to distinguish clumped objects:None
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Fill holes in identified objects?:After both thresholding and declumping
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Use advanced settings?:Yes
+    Threshold setting version:10
+    Threshold strategy:Adaptive
+    Thresholding method:Otsu
+    Threshold smoothing scale:1.3488
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Two classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+ConvertObjectsToImage:[module_num:13|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\'This steps makes the objects binary; a requirement for the Untangle module.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input objects:WormObjects
+    Name the output image:WormObjectsBinary
+    Select the color format:Binary (black & white)
+    Select the colormap:Default
+
+UntangleWorms:[module_num:14|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'Untangle the worms- we use a previous training set available on the BBBC. Point the training set file location to the folder containing the file \\xe2\\x80\\x98TrainingSetORO.xml\\xe2\\x80\\x99.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input binary image:WormObjectsBinary
+    Overlap style:Both
+    Name the output overlapping worm objects:OverlappingWorms
+    Name the output non-overlapping worm objects:NonOverlappingWorms
+    Training set file location:Default Input Folder\x7CBioimaging/ExamplePipelineOilRedO
+    Training set file name:TrainingSetORO.xml
+    Use training set weights?:Yes
+    Overlap weight:5.0
+    Leftover weight:10.0
+    Retain outlines of the overlapping objects?:Yes
+    Outline colormap?:Default
+    Name the overlapped outline image:OverlappedWormOutlines
+    Retain outlines of the non-overlapping worms?:No
+    Name the non-overlapped outlines image:NonoverlappedWormOutlines
+    Train or untangle worms?:Untangle
+    Minimum area percentile:1.0
+    Minimum area factor:0.85
+    Maximum area percentile:90.0
+    Maximum area factor:1.0
+    Minimum length percentile:1.0
+    Minimum length factor:0.9
+    Maximum length percentile:99.0
+    Maximum length factor:1.1
+    Maximum cost percentile:90.0
+    Maximum cost factor:1.9
+    Number of control points:21
+    Maximum radius percentile:90.0
+    Maximum radius factor:1.0
+    Maximum complexity:Process all clusters
+    Custom complexity:400
+
+ColorToGray:[module_num:15|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Now it\\xe2\\x80\\x99s time to define fat regions. The fat has best contrast in the blue image channel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:RawData
+    Conversion method:Split
+    Image type:RGB
+    Name the output image:OrigGray
+    Relative weight of the red channel:1.0
+    Relative weight of the green channel:1.0
+    Relative weight of the blue channel:1.0
+    Convert red to gray?:No
+    Name the output image:OrigRed
+    Convert green to gray?:No
+    Name the output image:OrigGreen
+    Convert blue to gray?:Yes
+    Name the output image:OrigBlue
+    Convert hue to gray?:Yes
+    Name the output image:OrigHue
+    Convert saturation to gray?:Yes
+    Name the output image:OrigSaturation
+    Convert value to gray?:Yes
+    Name the output image:OrigValue
+    Channel count:1
+    Channel number:Red\x3A 1
+    Relative weight of the channel:1.0
+    Image name:Channel1
+
+ImageMath:[module_num:16|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Invert the blue image- this is the best image to visualize the fat staining which represents the phenotype of interest.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Operation:Invert
+    Raise the power of the result by:1.0
+    Multiply the result by:1.0
+    Add to result:0.0
+    Set values less than 0 equal to 0?:Yes
+    Set values greater than 1 equal to 1?:Yes
+    Ignore the image masks?:No
+    Name the output image:InvBlue
+    Image or measurement?:Image
+    Select the first image:OrigBlue
+    Multiply the first image by:1.0
+    Measurement:
+    Image or measurement?:Image
+    Select the second image:
+    Multiply the second image by:1.0
+    Measurement:
+
+Crop:[module_num:17|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Crop the blue image (fat staining) in the shape of the untangled worms.Note that all overlapping regions are excluded.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:InvBlue
+    Name the output image:CropBlue
+    Select the cropping shape:Objects
+    Select the cropping method:Coordinates
+    Apply which cycle\'s cropping pattern?:Every
+    Left and right rectangle positions:0,end
+    Top and bottom rectangle positions:0,end
+    Coordinates of ellipse center:500,500
+    Ellipse radius, X direction:400
+    Ellipse radius, Y direction:200
+    Remove empty rows and columns?:No
+    Select the masking image:None
+    Select the image with a cropping mask:None
+    Select the objects:NonOverlappingWorms
+
+IdentifyPrimaryObjects:[module_num:18|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'In the blue image, we threshold just the darkest part of the blue- the fat staining.  The threshold can be changed to get the exact phenotype of interest.  Here we look for the most intense staining patterns.  We look for areas of staining as small as 2 pixels, and arbitrarily large.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:CropBlue
+    Name the primary objects to be identified:FatRegions
+    Typical diameter of objects, in pixel units (Min,Max):2,40000
+    Discard objects outside the diameter range?:Yes
+    Discard objects touching the border of the image?:No
+    Method to distinguish clumped objects:None
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Fill holes in identified objects?:After both thresholding and declumping
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Use advanced settings?:Yes
+    Threshold setting version:10
+    Threshold strategy:Global
+    Thresholding method:Manual
+    Threshold smoothing scale:1.3488
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.6
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Two classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+MeasureObjectSizeShape:[module_num:19|svn_version:\'Unknown\'|variable_revision_number:1|show_window:True|notes:\x5B\'Measure the shape and size of the regions we defined as fat. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select objects to measure:FatRegions
+    Calculate the Zernike features?:No
+
+RelateObjects:[module_num:20|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Here, we relate the fat objects to the untangled worms.  This allows us to assign shape  measurements for the fat to particular worms, which enables us to discover population heterogeneity.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Parent objects:NonOverlappingWorms
+    Child objects:FatRegions
+    Calculate child-parent distances?:None
+    Calculate per-parent means for all child measurements?:Yes
+    Calculate distances to other parents?:No
+    Parent name:None
+
+OverlayOutlines:[module_num:21|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'This module is only for visualization and may be omitted. We show the outline of the worms (in mixed colors) and the outlines of the fatty regions  within the non-overlapping regions of the worms (in blue).\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Display outlines on a blank image?:No
+    Select image on which to display outlines:RawData
+    Name the output image:OrigOverlay
+    Outline display mode:Color
+    Select method to determine brightness of outlines:Max of image
+    How to outline:Inner
+    Select outline color:#26FF2B
+    Select objects to display:OverlappingWorms
+    Select outline color:#0800F7
+    Select objects to display:FatRegions
+
+ExportToSpreadsheet:[module_num:22|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\'Export all the measurements to a file that can be read in Excel. Add more mesurement modules (such as intensity, shape and texture) if you believe thay may provide useful information. Select what measurements to export by clicking \\xe2\\x80\\x98select the columns of measurements to export\\xe2\\x80\\x99.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the column delimiter:Comma (",")
+    Add image metadata columns to your object data file?:No
+    Limit output to a size that is allowed in older Excel versions?:No
+    Select the measurements to export:No
+    Calculate the per-image mean values for object measurements?:No
+    Calculate the per-image median values for object measurements?:No
+    Calculate the per-image standard deviation values for object measurements?:No
+    Output file location:Default Output Folder\x7C
+    Create a GenePattern GCT file?:No
+    Select source of sample row name:Metadata
+    Select the image to use as the identifier:None
+    Select the metadata to use as the identifier:None
+    Export all measurement types?:No
+    Press button to select measurements:
+    Representation of Nan/Inf:NaN
+    Add a prefix to file names?:No
+    Filename prefix:MyExpt_
+    Overwrite existing files without warning?:Yes
+    Data to export:NonOverlappingWorms
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes

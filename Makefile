@@ -105,6 +105,21 @@ test:
 	    -o ExampleImagingFlowCytometryObjectsInGrid/output                                                         \
 	    -d ExampleImagingFlowCytometryObjectsInGrid/output/done
 
+	cellprofiler -c -r -p ExampleUntangleWorms/ExampleUntangleWorms.cppipe \
+	    -i ExampleUntangleWorms/images                                     \
+	    -o ExampleUntangleWorms/output                                     \
+	    -d ExampleUntangleWorms/output/done
+
+	cellprofiler -c -r -p ExampleStraightenWorms/ExampleUntangleAndStraightenWorms.cppipe \
+	    -i ExampleStraightenWorms/images                                                  \
+	    -o ExampleStraightenWorms/output                                                  \
+	    -d ExampleStraightenWorms/output/done
+
+	cellprofiler -c -r -p ExampleUntangleWormsBrightField/ExampleUntangleWormsBrightField.cppipe \
+	    -i ExampleUntangleWormsBrightField/images                                                \
+	    -o ExampleUntangleWormsBrightField/output                                                \
+	    -d ExampleUntangleWormsBrightField/output/done
+
 	@if [ $$(cat ExampleCometAssay/output/done) = Failure ] ||                           \
 	    [ $$(cat ExampleFly/output/done) = Failure ] ||                                  \
 	    [ $$(cat ExampleHuman/output/done) = Failure ] ||                                \

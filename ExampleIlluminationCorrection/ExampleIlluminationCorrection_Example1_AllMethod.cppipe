@@ -39,7 +39,7 @@ NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:7|s
     x:1.0
     y:1.0
     z:1.0
-    Select the rule criteria:and (file does contain "TIF")
+    Select the rule criteria:and (file does contain "AS_09047_")
     Name to assign these images:OrigGreen
     Name to assign these objects:Cell
     Select the image type:Color image
@@ -115,7 +115,7 @@ CorrectIlluminationApply:[module_num:8|svn_version:\'Unknown\'|variable_revision
     Select the illumination function:OptimalIllumGreen
     Select how the illumination function is applied:Divide
 
-SaveImages:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:12|show_window:True|notes:\x5B\'You can save the final illumination function to a file for later use in an analysis pipeline.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+SaveImages:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'You can save the final illumination function to a file for later use in an analysis pipeline.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the type of image to save:Image
     Select the image to save:OptimalIllumGreen
     Select method for constructing file names:Single name
@@ -124,9 +124,9 @@ SaveImages:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:12|sho
     Number of digits:4
     Append a suffix to the image file name?:No
     Text to append to the image name:
-    Saved file format:tiff
+    Saved file format:npy
     Output file location:Default Output Folder\x7C
-    Image bit depth:64-bit floating point
+    Image bit depth:32-bit floating point
     Overwrite existing files without warning?:Yes
     When to save:First cycle
     Record the file and path information to the saved image?:No

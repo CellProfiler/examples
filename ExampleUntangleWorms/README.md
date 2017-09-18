@@ -1,0 +1,1 @@
+ In this pipeline, we identify individual worms and extract shape and intensity measurements. Worm untangling requires a worm model, which is provided together with the pipeline. If adjusting the pipeline to fit your own data, worm detection will likely improve by creating a new worm model based on your own image data.

@@ -136,6 +136,9 @@ test:
 	    [ $$(cat ExampleSpeckles/output/done) = Failure ] ||                             \
 	    [ $$(cat ExampleTrackObjects/output/done) = Failure ] ||                         \
 	    [ $$(cat ExampleWoundHealing/output/done) = Failure ] ||                         \
+	    [ $$(cat ExampleUntangleWorms/output/done) = Failure ] ||                        \
+	    [ $$(cat ExampleStraightenWorms/output/done) = Failure ] ||                      \
+	    [ $$(cat ExampleUntangleWormsBrightField/output/done) = Failure ] ||             \
 	    [ $$(cat ExampleImagingFlowCytometryObjectsInGrid/output/done) = Failure ]; then \
 	    false;                                                                           \
 	else true; fi

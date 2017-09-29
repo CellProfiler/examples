@@ -1,0 +1,315 @@
+CellProfiler Pipeline: http://www.cellprofiler.org
+Version:3
+DateRevision:300
+GitHash:
+ModuleCount:17
+HasImagePlaneDetails:False
+
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    :
+    Filter images?:Images only
+    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "\x5B\\\\\\\\\\\\\\\\/\x5D\\\\\\\\.")
+
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Extract metadata?:No
+    Metadata data type:Text
+    Metadata types:{}
+    Extraction method count:1
+    Metadata extraction method:Extract from file/folder names
+    Metadata source:File name
+    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)_w(?P<ChannelNumber>\x5B0-9\x5D)
+    Regular expression to extract from folder name:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
+    Extract metadata from:All images
+    Select the filtering criteria:and (file does contain "")
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
+    Use case insensitive matching?:No
+
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:8|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\', \'\\xe2\\x80\\x94\', \'Load bright-field (all worms, w1), GFP (signal of interest,w2) and mCherry (head marker, w3) images.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Assign a name to:Images matching rules
+    Select the image type:Grayscale image
+    Name to assign these images:DNA
+    Match metadata:\x5B\x5D
+    Image set matching method:Order
+    Set intensity range from:Image metadata
+    Assignments count:3
+    Single images count:0
+    Maximum intensity:255.0
+    Process as 3D:No
+    x:1.0
+    y:1.0
+    z:1.0
+    Select the rule criteria:and (file does contain "w1")
+    Name to assign these images:Worms
+    Name to assign these objects:Cell
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Maximum intensity:255.0
+    Select the rule criteria:and (file does contain "w2")
+    Name to assign these images:GFP
+    Name to assign these objects:Cell
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Maximum intensity:255.0
+    Select the rule criteria:and (file does contain "w3")
+    Name to assign these images:mCherry
+    Name to assign these objects:Cell
+    Select the image type:Grayscale image
+    Set intensity range from:Image metadata
+    Maximum intensity:255.0
+
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Do you want to group your images?:No
+    grouping metadata count:1
+    Metadata category:None
+
+CorrectIlluminationCalculate:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'For brightfield data with dark well edges and bright illumination in the center of the image, the \\xe2\\x80\\x98ConvexHull\\xe2\\x80\\x99 approach works well. For other variations in illumination, test one of the alternative methods.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:Worms
+    Name the output image:Background
+    Select how the illumination function is calculated:Regular
+    Dilate objects in the final averaged image?:No
+    Dilation radius:1
+    Block size:60
+    Rescale the illumination function?:No
+    Calculate function for each image individually, or based on all images?:Each
+    Smoothing method:Convex Hull
+    Method to calculate smoothing filter size:Automatic
+    Approximate object size:10
+    Smoothing filter size:10
+    Retain the averaged image?:No
+    Name the averaged image:IllumBlueAvg
+    Retain the dilated image?:No
+    Name the dilated image:IllumBlueDilated
+    Automatically calculate spline parameters?:Yes
+    Background mode:auto
+    Number of spline points:5
+    Background threshold:2.0
+    Image resampling factor:2.0
+    Maximum number of iterations:40
+    Residual value for convergence:0.001
+
+CorrectIlluminationApply:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Divide away the variation in illumination.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:Worms
+    Name the output image:IllumCorrWorms
+    Select the illumination function:Background
+    Select how the illumination function is applied:Divide
+
+ImageMath:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Invert the image to make worms bright (foreground) and background dark.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Operation:Invert
+    Raise the power of the result by:1.0
+    Multiply the result by:1.0
+    Add to result:0.0
+    Set values less than 0 equal to 0?:Yes
+    Set values greater than 1 equal to 1?:Yes
+    Ignore the image masks?:No
+    Name the output image:WormsInverted
+    Image or measurement?:Image
+    Select the first image:IllumCorrWorms
+    Multiply the first image by:1.0
+    Measurement:
+    Image or measurement?:Image
+    Select the second image:
+    Multiply the second image by:1.0
+    Measurement:
+
+Threshold:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:10|show_window:True|notes:\x5B\'Apply an intensity threshold to define worms vs background. Adjust thresholding method and/or correction factor if the result of the thresholding does not separate foreground and background well. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:WormsInverted
+    Name the output image:WormsBinary
+    Threshold strategy:Global
+    Thresholding method:Minimum cross entropy
+    Threshold smoothing scale:0.0
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.0
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Two classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+UntangleWorms:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'This step untangles the worms using a provided WormModel. This worm model was built from a large number of samples of single worms. If the result of the untangling is not satisfactory, either create your own worm model based on your image data (see example pipeline), or adjust the provided worm model by opening it in a text editor and change settings for worm length, area etc. You may also want to adjust the \\xe2\\x80\\x98Maximum Complexity\\xe2\\x80\\x99 which controlls how complex clusters the untangling will handle. Large clusters (>6 worms) may be slow to process.\', \'\', \'For the training set file location, set this to the folder containing the file \\xe2\\x80\\x98WormModel.xml\\xe2\\x80\\x99\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input binary image:WormsBinary
+    Overlap style:Both
+    Name the output overlapping worm objects:OverlappingWorms
+    Name the output non-overlapping worm objects:NonOverlappingWorms
+    Training set file location:Default Input Folder\x7CBioimaging/ExamplePipelineStraighten
+    Training set file name:WormModel.xml
+    Use training set weights?:Yes
+    Overlap weight:5.0
+    Leftover weight:10.0
+    Retain outlines of the overlapping objects?:Yes
+    Outline colormap?:gist_rainbow
+    Name the overlapped outline image:OverlappedWormOutlines
+    Retain outlines of the non-overlapping worms?:Yes
+    Name the non-overlapped outlines image:NonoverlappedWormOutlines
+    Train or untangle worms?:Untangle
+    Minimum area percentile:1.0
+    Minimum area factor:0.85
+    Maximum area percentile:90.0
+    Maximum area factor:1.0
+    Minimum length percentile:1.0
+    Minimum length factor:0.9
+    Maximum length percentile:99.0
+    Maximum length factor:1.1
+    Maximum cost percentile:90.0
+    Maximum cost factor:1.9
+    Number of control points:21
+    Maximum radius percentile:90.0
+    Maximum radius factor:1.0
+    Maximum complexity:Process all clusters
+    Custom complexity:400
+
+OverlayOutlines:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Optional\x3AThis step is only for visualization of the untangling result. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Display outlines on a blank image?:No
+    Select image on which to display outlines:Worms
+    Name the output image:OrigOverlay
+    Outline display mode:Color
+    Select method to determine brightness of outlines:Max of image
+    How to outline:Inner
+    Select outline color:Red
+    Select objects to display:OverlappingWorms
+
+StraightenWorms:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Worm straightening takes the result from untangling as input, and both straightens the worms and extracts intensity measurements. \\xe2\\x80\\x98Worm width\\xe2\\x80\\x99 should be adjusted as to cover the diameter of your worms. Feature extraction is however limited to the mask defined at untangling, and a wide worm width will not affect the result. For feature extraction using the low-resolution worm atlas, specify the number of transverse segments and longitudinal stripes for extraction of intensity measurements. The positioning of the segments will be adjusted to the length and width of the mask defining the worm, and thereby compensating for variations in length and width. Aslo select the images (here GFP and mCherry) from where to extract intensity measurements using the atlas.\', \'\', \'For the training set file location, set this to the folder containing the file \\xe2\\x80\\x98WormModel.xml\\xe2\\x80\\x99\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input untangled worm objects:NonOverlappingWorms
+    Name the output straightened worm objects:StraightenedWorms
+    Worm width:20
+    Training set file location:Default Input Folder\x7CBioimaging/ExamplePipelineStraighten
+    Training set file name:WormModel.xml
+    Image count:2
+    Measure intensity distribution?:Yes
+    Number of transverse segments:5
+    Number of longitudinal stripes:1
+    Align worms?:Top brightest
+    Alignment image:mCherry
+    Select an input image to straighten:mCherry
+    Name the output straightened image:Straightened_mCherry
+    Select an input image to straighten:GFP
+    Name the output straightened image:Straightened_GFP
+
+IdentifyPrimaryObjects:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'Here we chose to also detect the head markers, by thresholding the mCherry image. For this type of spot-detection, a pre-processing step using \\xe2\\x80\\x98EnhanceOrSupressFeatures\\xe2\\x80\\x99 may improve the result.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the input image:mCherry
+    Name the primary objects to be identified:HeadMarkers
+    Typical diameter of objects, in pixel units (Min,Max):5,40
+    Discard objects outside the diameter range?:Yes
+    Discard objects touching the border of the image?:Yes
+    Method to distinguish clumped objects:None
+    Method to draw dividing lines between clumped objects:Intensity
+    Size of smoothing filter:10
+    Suppress local maxima that are closer than this minimum allowed distance:7.0
+    Speed up by using lower-resolution image to find local maxima?:Yes
+    Fill holes in identified objects?:After both thresholding and declumping
+    Automatically calculate size of smoothing filter for declumping?:Yes
+    Automatically calculate minimum allowed distance between local maxima?:Yes
+    Handling of objects if excessive number of objects identified:Continue
+    Maximum number of objects:500
+    Use advanced settings?:Yes
+    Threshold setting version:10
+    Threshold strategy:Global
+    Thresholding method:Manual
+    Threshold smoothing scale:1.3488
+    Threshold correction factor:1.0
+    Lower and upper bounds on threshold:0.0,1.0
+    Manual threshold:0.0025
+    Select the measurement to threshold with:None
+    Two-class or three-class thresholding?:Two classes
+    Assign pixels in the middle intensity class to the foreground or the background?:Foreground
+    Size of adaptive window:50
+    Lower outlier fraction:0.05
+    Upper outlier fraction:0.05
+    Averaging method:Mean
+    Variance method:Standard deviation
+    # of deviations:2.0
+    Thresholding method:Otsu
+
+RelateObjects:[module_num:13|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'The detected head markers are associated with a particular worm using this module. No adjustments needed.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Parent objects:NonOverlappingWorms
+    Child objects:HeadMarkers
+    Calculate child-parent distances?:None
+    Calculate per-parent means for all child measurements?:No
+    Calculate distances to other parents?:No
+    Parent name:None
+
+GrayToColor:[module_num:14|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Optional\x3A This is for visual comparison of the straightened worms and can be omitted.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select a color scheme:RGB
+    Select the image to be colored red:Straightened_mCherry
+    Select the image to be colored green:Straightened_GFP
+    Select the image to be colored blue:Leave this black
+    Name the output image:StraightenedRG
+    Relative weight for the red image:1.0
+    Relative weight for the green image:1.0
+    Relative weight for the blue image:1.0
+    Select the image to be colored cyan:Leave this black
+    Select the image to be colored magenta:Leave this black
+    Select the image to be colored yellow:Leave this black
+    Select the image that determines brightness:Leave this black
+    Relative weight for the cyan image:1.0
+    Relative weight for the magenta image:1.0
+    Relative weight for the yellow image:1.0
+    Relative weight for the brightness image:1.0
+    Hidden:1
+    Image name:None
+    Color:#ff0000
+    Weight:1.0
+
+GrayToColor:[module_num:15|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Optional\x3A This is also for visualization of the detected objects overlaied on the combined GFP and mCherry image.\', \'Right-click on output image to rescal image contrast to \\xe2\\x80\\x98Log normalized\\xe2\\x80\\x99 if signals are difficult to see.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select a color scheme:RGB
+    Select the image to be colored red:mCherry
+    Select the image to be colored green:GFP
+    Select the image to be colored blue:Leave this black
+    Name the output image:OrigRG
+    Relative weight for the red image:1.0
+    Relative weight for the green image:1.0
+    Relative weight for the blue image:1.0
+    Select the image to be colored cyan:Leave this black
+    Select the image to be colored magenta:Leave this black
+    Select the image to be colored yellow:Leave this black
+    Select the image that determines brightness:Leave this black
+    Relative weight for the cyan image:1.0
+    Relative weight for the magenta image:1.0
+    Relative weight for the yellow image:1.0
+    Relative weight for the brightness image:1.0
+    Hidden:1
+    Image name:None
+    Color:#ff0000
+    Weight:1.0
+
+OverlayOutlines:[module_num:16|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Otional\x3A This step is only for visualization of the result and can be omitted.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Display outlines on a blank image?:No
+    Select image on which to display outlines:OrigRG
+    Name the output image:OrigOverlay
+    Outline display mode:Color
+    Select method to determine brightness of outlines:Max of image
+    How to outline:Inner
+    Select outline color:red
+    Select objects to display:NonOverlappingWorms
+    Select outline color:green
+    Select objects to display:HeadMarkers
+
+ExportToSpreadsheet:[module_num:17|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\'Here, intensity measurements using the worm atlas as well as marker counts are exported to a spreadsheet. One can chose to export all data, or as here, ony export a subset of the measurements taken. The resulting csv-files can be opened in a text editor or e.g. Excel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+    Select the column delimiter:Comma (",")
+    Add image metadata columns to your object data file?:No
+    Limit output to a size that is allowed in older Excel versions?:No
+    Select the measurements to export:Yes
+    Calculate the per-image mean values for object measurements?:No
+    Calculate the per-image median values for object measurements?:No
+    Calculate the per-image standard deviation values for object measurements?:No
+    Output file location:Default Output Folder\x7C
+    Create a GenePattern GCT file?:No
+    Select source of sample row name:Metadata
+    Select the image to use as the identifier:None
+    Select the metadata to use as the identifier:None
+    Export all measurement types?:No
+    Press button to select measurements:Image\x7CFileName_GFP,Image\x7CFileName_mCherry,Image\x7CFileName_Worms,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T1of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T2of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T3of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T4of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T5of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T1of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T2of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T3of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T4of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T5of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T1of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T2of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T3of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T4of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T5of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T1of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T2of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T3of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T4of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T5of5_L1of1,NonOverlappingWorms\x7CChildren_HeadMarkers_Count
+    Representation of Nan/Inf:NaN
+    Add a prefix to file names?:No
+    Filename prefix:MyExpt_
+    Overwrite existing files without warning?:Yes
+    Data to export:StraightenedWorms
+    Combine these object measurements with those of the previous object?:No
+    File name:DATA.csv
+    Use the object name for the file name?:Yes

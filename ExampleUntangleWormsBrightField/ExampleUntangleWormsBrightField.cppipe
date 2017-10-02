@@ -83,7 +83,7 @@ CorrectIlluminationCalculate:[module_num:6|svn_version:\'Unknown\'|variable_revi
     Dilate objects in the final averaged image?:No
     Dilation radius:1
     Block size:60
-    Rescale the illumination function?:Yes
+    Rescale the illumination function?:No
     Calculate function for each image individually, or based on all images?:Each
     Smoothing method:Convex Hull
     Method to calculate smoothing filter size:Automatic
@@ -177,15 +177,15 @@ IdentifyPrimaryObjects:[module_num:12|svn_version:\'Unknown\'|variable_revision_
     Size of smoothing filter:10
     Suppress local maxima that are closer than this minimum allowed distance:7.0
     Speed up by using lower-resolution image to find local maxima?:Yes
-    Fill holes in identified objects?:After both thresholding and declumping
+    Fill holes in identified objects?:Never
     Automatically calculate size of smoothing filter for declumping?:Yes
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Handling of objects if excessive number of objects identified:Continue
     Maximum number of objects:500
     Use advanced settings?:Yes
     Threshold setting version:10
-    Threshold strategy:Adaptive
-    Thresholding method:Otsu
+    Threshold strategy:Global
+    Thresholding method:Minimum cross entropy
     Threshold smoothing scale:1.3488
     Threshold correction factor:1.0
     Lower and upper bounds on threshold:0.0,1.0

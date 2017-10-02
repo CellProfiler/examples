@@ -126,6 +126,7 @@ MeasureImageAreaOccupied:[module_num:8|svn_version:\'Unknown\'|variable_revision
     Select objects to measure:Tissue
     Select a binary image to measure:None
 
+ExportToSpreadsheet:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:12|show_window:True|notes:\x5B\'Export any measurements to a comma-delimited file (.csv). Since the tissue area is an image measurement, it is included in the per-image file.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
     Select the measurements to export:No

@@ -35,10 +35,10 @@ NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:8|s
     Assignments count:3
     Single images count:0
     Maximum intensity:255.0
-    Process as 3D:No
-    x:1.0
-    y:1.0
-    z:1.0
+    Process as 3D?:No
+    Relative pixel spacing in X:1.0
+    Relative pixel spacing in Y:1.0
+    Relative pixel spacing in Z:1.0
     Select the rule criteria:and (file does contain "w1")
     Name to assign these images:Worms
     Name to assign these objects:Cell
@@ -74,7 +74,7 @@ CorrectIlluminationCalculate:[module_num:5|svn_version:\'Unknown\'|variable_revi
     Calculate function for each image individually, or based on all images?:Each
     Smoothing method:Convex Hull
     Method to calculate smoothing filter size:Automatic
-    Approximate object size:10
+    Approximate object diameter:10
     Smoothing filter size:10
     Retain the averaged image?:No
     Name the averaged image:IllumBlueAvg
@@ -290,10 +290,9 @@ OverlayOutlines:[module_num:16|svn_version:\'Unknown\'|variable_revision_number:
     Select outline color:green
     Select objects to display:HeadMarkers
 
-ExportToSpreadsheet:[module_num:17|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\'Here, intensity measurements using the worm atlas as well as marker counts are exported to a spreadsheet. One can chose to export all data, or as here, ony export a subset of the measurements taken. The resulting csv-files can be opened in a text editor or e.g. Excel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+ExportToSpreadsheet:[module_num:17|svn_version:\'Unknown\'|variable_revision_number:12|show_window:True|notes:\x5B\'Here, intensity measurements using the worm atlas as well as marker counts are exported to a spreadsheet. One can chose to export all data, or as here, ony export a subset of the measurements taken. The resulting csv-files can be opened in a text editor or e.g. Excel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
-    Limit output to a size that is allowed in older Excel versions?:No
     Select the measurements to export:Yes
     Calculate the per-image mean values for object measurements?:No
     Calculate the per-image median values for object measurements?:No

@@ -62,7 +62,7 @@ CorrectIlluminationCalculate:[module_num:2|svn_version:\'Unknown\'|variable_revi
     Calculate function for each image individually, or based on all images?:Each
     Smoothing method:Convex Hull
     Method to calculate smoothing filter size:Automatic
-    Approximate object size:10
+    Approximate object diameter:10
     Smoothing filter size:10
     Retain the averaged image?:No
     Name the averaged image:IllumBlueAvg
@@ -251,10 +251,9 @@ MeasureObjectIntensity:[module_num:14|svn_version:\'Unknown\'|variable_revision_
     Select an image to measure:Sytox
     Select objects to measure:NonOverlappingWorms
 
-ExportToSpreadsheet:[module_num:15|svn_version:\'Unknown\'|variable_revision_number:11|show_window:True|notes:\x5B\'This module exports measurements to a spreadsheet. You may chose to export all measurements, or limit measurements to those of interest, as shown below. The created csv files include measurements on a per-worm basis, and can be opened in a text editor or any spreadsheet program such as Excel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
+ExportToSpreadsheet:[module_num:15|svn_version:\'Unknown\'|variable_revision_number:12|show_window:True|notes:\x5B\'This module exports measurements to a spreadsheet. You may chose to export all measurements, or limit measurements to those of interest, as shown below. The created csv files include measurements on a per-worm basis, and can be opened in a text editor or any spreadsheet program such as Excel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
-    Limit output to a size that is allowed in older Excel versions?:No
     Select the measurements to export:Yes
     Calculate the per-image mean values for object measurements?:No
     Calculate the per-image median values for object measurements?:No

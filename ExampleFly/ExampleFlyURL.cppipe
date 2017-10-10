@@ -279,3 +279,15 @@ ExportToSpreadsheet:[module_num:16|svn_version:\'Unknown\'|variable_revision_num
     Combine these object measurements with those of the previous object?:No
     File name:Cytoplasm.csv
     Use the object name for the file name?:No
+    
+"Version":"1","PlaneCount":"9"
+"URL","Series","Index","Channel"
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS002_D.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS002_F.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS002_R.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS076_D.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS076_F.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS076_R.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS218_D.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS218_F.TIF",,,
+"https://raw.githubusercontent.com/CellProfiler/examples/master/ExampleFly/images/01_POS218_R.TIF",,,

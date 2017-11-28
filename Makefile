@@ -18,6 +18,7 @@ clean:
 	rm -rf ExampleTrackObjects/output
 	rm -rf ExampleWoundHealing/output
 	rm -rf ExampleImagingFlowCytometryObjectsInGrid/output
+	rm -rf ExampleVitraImages/output
 
 test:
 	cellprofiler -c -r -p ExampleCometAssay/ExampleCometAssay.cppipe \
@@ -119,6 +120,11 @@ test:
 	    -i ExampleUntangleWormsBrightField/images                                                \
 	    -o ExampleUntangleWormsBrightField/output                                                \
 	    -d ExampleUntangleWormsBrightField/output/done
+	    
+	cellprofiler -c -r -p ExampleVitraImages/ExampleVitra.cppipe \
+	    -i ExampleVitraImages/images                                                \
+	    -o ExampleVitraImages/output                                                \
+	    -d ExampleVitraImages/output/done
 
 	@if [ $$(cat ExampleCometAssay/output/done) = Failure ] ||                           \
 	    [ $$(cat ExampleFly/output/done) = Failure ] ||                                  \
@@ -139,6 +145,7 @@ test:
 	    [ $$(cat ExampleUntangleWorms/output/done) = Failure ] ||                        \
 	    [ $$(cat ExampleStraightenWorms/output/done) = Failure ] ||                      \
 	    [ $$(cat ExampleUntangleWormsBrightField/output/done) = Failure ] ||             \
-	    [ $$(cat ExampleImagingFlowCytometryObjectsInGrid/output/done) = Failure ]; then \
+	    [ $$(cat ExampleImagingFlowCytometryObjectsInGrid/output/done) = Failure ] ||    \
+	    [ $$(cat ExampleVitraImages/output/done) = Failure ]; then			     \
 	    false;                                                                           \
 	else true; fi

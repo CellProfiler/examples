@@ -20,7 +20,7 @@ install:
   - pip install --upgrade cython joblib numpy scipy
   - pip install --editable git+https://github.com/CellProfiler/CellProfiler.git#egg=CellProfiler
   - pip freeze
-script: make test
+script: travis_wait 30 make test
 after_script: make clean
 notifications:
   email: false

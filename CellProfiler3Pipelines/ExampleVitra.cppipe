@@ -1,48 +1,44 @@
 CellProfiler Pipeline: http://www.cellprofiler.org
-Version:5
-DateRevision:400
+Version:3
+DateRevision:300
 GitHash:
 ModuleCount:14
 HasImagePlaneDetails:False
 
-Images:[module_num:1|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     :
     Filter images?:Custom
     Select the rule criteria:or (extension does isimage) (file does endwith ".npy")
 
-Metadata:[module_num:2|svn_version:'Unknown'|variable_revision_number:6|show_window:False|notes:['The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.', '', "Here we're going to extract the well location that each image was taken in.  We'll also collect the folder the images reside in, so that we can match the illumination correction function with each well next step in NamesAndTypes."]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\', \'\', "Here we\'re going to extract the well location that each image was taken in.  We\'ll also collect the folder the images reside in, so that we can match the illumination correction function with each well next step in NamesAndTypes."\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Extract metadata?:Yes
     Metadata data type:Text
     Metadata types:{}
     Extraction method count:2
     Metadata extraction method:Extract from file/folder names
     Metadata source:File name
-    Regular expression to extract from file name:^Channel (?P<ChannelNumber>[0-9])-[0-9]{2}-(?P<WellRow>[A-P])-(?P<WellCol>[0-9]{2})
-    Regular expression to extract from folder name:(?P<Date>[0-9]{4}_[0-9]{2}_[0-9]{2})$
+    Regular expression to extract from file name:^Channel (?P<ChannelNumber>\x5B0-9\x5D)-\x5B0-9\x5D{2}-(?P<WellRow>\x5BA-P\x5D)-(?P<WellCol>\x5B0-9\x5D{2})
+    Regular expression to extract from folder name:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
     Extract metadata from:All images
     Select the filtering criteria:and (file does contain "")
-    Metadata file location:Elsewhere...|
-    Match file and image metadata:[]
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
     Use case insensitive matching?:No
-    Metadata file name:
-    Does cached metadata exist?:No
     Metadata extraction method:Extract from file/folder names
     Metadata source:Folder name
-    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>[A-P][0-9]{2})_s(?P<Site>[0-9])_w(?P<ChannelNumber>[0-9])
+    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)_w(?P<ChannelNumber>\x5B0-9\x5D)
     Regular expression to extract from folder name:(?P<Folder>.*)$
     Extract metadata from:All images
     Select the filtering criteria:and (file does contain "")
-    Metadata file location:Elsewhere...|
-    Match file and image metadata:[]
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
     Use case insensitive matching?:No
-    Metadata file name:
-    Does cached metadata exist?:No
 
-NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|show_window:False|notes:['The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.', '---', "Load the images by matching files in the folder against the unique text pattern for each stain: 'Channel 1' for protein, 'Channel 2' for the nuclei image. Also, exactly match the text for the illumination correction function file names. ", '', '---', 'So that you can match each well\'s images to the single set of illumination correction functions, rather than matching the image set by "Order" we\'ve matched it by "Metadata", which allows us to instruct CellProfiler that each well will have its own set of OrigDNA and OrigProtein images but that they\'ll all use the illumination correction function found in the same folder.', '', '']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:8|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\', \'---\', "Load the images by matching files in the folder against the unique text pattern for each stain\x3A \'Channel 1\' for protein, \'Channel 2\' for the nuclei image. Also, exactly match the text for the illumination correction function file names. ", \'\', \'---\', \'So that you can match each well\\\'s images to the single set of illumination correction functions, rather than matching the image set by "Order" we\\\'ve matched it by "Metadata", which allows us to instruct CellProfiler that each well will have its own set of OrigDNA and OrigProtein images but that they\\\'ll all use the illumination correction function found in the same folder.\', \'\', \'\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Assign a name to:Images matching rules
     Select the image type:Grayscale image
     Name to assign these images:DNA
-    Match metadata:[{u'IllumProtein': u'Folder', u'OrigDNA': u'Folder', u'IllumDNA': u'Folder', u'OrigProtein': u'Folder'}, {u'IllumProtein': None, u'OrigDNA': u'Well', u'IllumDNA': None, u'OrigProtein': u'Well'}]
+    Match metadata:\x5B{u\'IllumProtein\'\x3A u\'Folder\', u\'OrigDNA\'\x3A u\'Folder\', u\'IllumDNA\'\x3A u\'Folder\', u\'OrigProtein\'\x3A u\'Folder\'}, {u\'IllumProtein\'\x3A None, u\'OrigDNA\'\x3A u\'Well\', u\'IllumDNA\'\x3A None, u\'OrigProtein\'\x3A u\'Well\'}\x5D
     Image set matching method:Metadata
     Set intensity range from:Image metadata
     Assignments count:4
@@ -77,12 +73,12 @@ NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|sho
     Set intensity range from:Image metadata
     Maximum intensity:255.0
 
-Groups:[module_num:4|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Do you want to group your images?:No
     grouping metadata count:1
     Metadata category:None
 
-CorrectIlluminationApply:[module_num:5|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['Correct both images by applying the illumination correction functions through division. ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationApply:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Correct both images by applying the illumination correction functions through division. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:OrigProtein
     Name the output image:CorrProtein
     Select the illumination function:IllumProtein
@@ -91,10 +87,8 @@ CorrectIlluminationApply:[module_num:5|svn_version:'Unknown'|variable_revision_n
     Name the output image:CorrDNA
     Select the illumination function:IllumDNA
     Select how the illumination function is applied:Divide
-    Set output image values less than 0 equal to 0?:Yes
-    Set output image values greater than 1 equal to 1?:Yes
 
-IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:['Identify the nuclei from the nuclear stain image. ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'Identify the nuclei from the nuclear stain image. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:CorrDNA
     Name the primary objects to be identified:Nuclei
     Typical diameter of objects, in pixel units (Min,Max):5,30
@@ -110,12 +104,10 @@ IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_num
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Handling of objects if excessive number of objects identified:Continue
     Maximum number of objects:500
-    Display accepted local maxima?:No
-    Select maxima color:Blue
     Use advanced settings?:Yes
-    Threshold setting version:11
+    Threshold setting version:9
     Threshold strategy:Global
-    Thresholding method:Minimum Cross-Entropy
+    Thresholding method:Minimum cross entropy
     Threshold smoothing scale:1.3488
     Threshold correction factor:1
     Lower and upper bounds on threshold:0.0,1.0
@@ -131,7 +123,7 @@ IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_num
     # of deviations:2
     Thresholding method:Otsu
 
-IdentifySecondaryObjects:[module_num:7|svn_version:'Unknown'|variable_revision_number:10|show_window:True|notes:['Identify the cells by using the nuclei as a “seed” region, then growing outwards until stopped by the image threshold or by a neighbor. The Distance-B method is used to delineate the boundary between neighboring cells.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifySecondaryObjects:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:10|show_window:True|notes:\x5B\'Identify the cells by using the nuclei as a "seed" region, then growing outwards until stopped by the image threshold or by a neighbor. The Distance-B method is used to delineate the boundary between neighboring cells.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells
     Select the method to identify the secondary objects:Distance - B
@@ -142,9 +134,9 @@ IdentifySecondaryObjects:[module_num:7|svn_version:'Unknown'|variable_revision_n
     Discard the associated primary objects?:No
     Name the new primary objects:FilteredNuclei
     Fill holes in identified objects?:No
-    Threshold setting version:11
+    Threshold setting version:9
     Threshold strategy:Global
-    Thresholding method:Minimum Cross-Entropy
+    Thresholding method:Minimum cross entropy
     Threshold smoothing scale:0
     Threshold correction factor:1
     Lower and upper bounds on threshold:0,1
@@ -160,17 +152,20 @@ IdentifySecondaryObjects:[module_num:7|svn_version:'Unknown'|variable_revision_n
     # of deviations:2
     Thresholding method:Otsu
 
-IdentifyTertiaryObjects:[module_num:8|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:['Identify the cytoplasm by "subtracting" the nuclei objects from the cell objects.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyTertiaryObjects:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Identify the cytoplasm by "subtracting" the nuclei objects from the cell objects.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the larger identified objects:Cells
     Select the smaller identified objects:Nuclei
     Name the tertiary objects to be identified:Cytoplasm
     Shrink smaller object prior to subtraction?:Yes
 
-MeasureObjectIntensity:[module_num:9|svn_version:'Unknown'|variable_revision_number:4|show_window:True|notes:['Measure intensity features from nuclei, cell and cytoplasm objects against the corrected images.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
-    Select images to measure:CorrProtein
-    Select objects to measure:Nuclei, Cells, Cytoplasm
+MeasureObjectIntensity:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Measure intensity features from nuclei, cell and cytoplasm objects against the corrected images.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:True]
+    Hidden:1
+    Select an image to measure:CorrProtein
+    Select objects to measure:Nuclei
+    Select objects to measure:Cells
+    Select objects to measure:Cytoplasm
 
-CalculateMath:[module_num:10|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:['Calculate the nuclei-to-cell ratio of the mean protein intensity.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CalculateMath:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'Calculate the nuclei-to-cell ratio of the mean protein intensity.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Name the output measurement:Ratio1
     Operation:Divide
     Select the numerator measurement type:Object
@@ -187,14 +182,12 @@ CalculateMath:[module_num:10|svn_version:'Unknown'|variable_revision_number:3|sh
     Multiply the result by:1
     Raise the power of result by:1
     Add to the result:0
-    How should the output value be rounded?:Not rounded
-    Enter how many decimal places the value should be rounded to:0
     Constrain the result to a lower bound?:No
     Enter the lower bound:0
     Constrain the result to an upper bound?:No
     Enter the upper bound:1
 
-CalculateMath:[module_num:11|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:['Calculate the cytoplasm-to-cell ratio of the mean protein intensity.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CalculateMath:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'Calculate the cytoplasm-to-cell ratio of the mean protein intensity.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Name the output measurement:Ratio2
     Operation:Divide
     Select the numerator measurement type:Object
@@ -211,14 +204,12 @@ CalculateMath:[module_num:11|svn_version:'Unknown'|variable_revision_number:3|sh
     Multiply the result by:1
     Raise the power of result by:1
     Add to the result:0
-    How should the output value be rounded?:Not rounded
-    Enter how many decimal places the value should be rounded to:0
     Constrain the result to a lower bound?:No
     Enter the lower bound:0
     Constrain the result to an upper bound?:No
     Enter the upper bound:1
 
-OverlayOutlines:[module_num:12|svn_version:'Unknown'|variable_revision_number:4|show_window:True|notes:['Overlay the nucleus and cell outlines on the protein image.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+OverlayOutlines:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Overlay the nucleus and cell outlines on the protein image.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Display outlines on a blank image?:No
     Select image on which to display outlines:CorrProtein
     Name the output image:Outlined
@@ -230,7 +221,7 @@ OverlayOutlines:[module_num:12|svn_version:'Unknown'|variable_revision_number:4|
     Select outline color:Green
     Select objects to display:Cells
 
-SaveImages:[module_num:13|svn_version:'Unknown'|variable_revision_number:15|show_window:True|notes:["Save the nuclei overlay image as an 8-bit TIF, appending the text '_Outlined' to the original filename of the protein image."]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+SaveImages:[module_num:13|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B"Save the nuclei overlay image as an 8-bit TIF, appending the text \'_Outlined\' to the original filename of the protein image."\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the type of image to save:Image
     Select the image to save:Outlined
     Select method for constructing file names:From image filename
@@ -240,30 +231,28 @@ SaveImages:[module_num:13|svn_version:'Unknown'|variable_revision_number:15|show
     Append a suffix to the image file name?:Yes
     Text to append to the image name:_Outlined
     Saved file format:tiff
-    Output file location:Default Output Folder|None
+    Output file location:Default Output Folder\x7CNone
     Image bit depth:8-bit integer
     Overwrite existing files without warning?:Yes
     When to save:Every cycle
     Record the file and path information to the saved image?:No
     Create subfolders in the output folder?:No
-    Base image folder:Elsewhere...|/Users/veneskey/svn/pipeline/ExampleImages/ExampleVitraImages
-    How to save the series:T (Time)
+    Base image folder:Elsewhere...\x7C/Users/veneskey/svn/pipeline/ExampleImages/ExampleVitraImages
 
-ExportToSpreadsheet:[module_num:14|svn_version:'Unknown'|variable_revision_number:13|show_window:True|notes:["Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv's."]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+ExportToSpreadsheet:[module_num:14|svn_version:\'Unknown\'|variable_revision_number:12|show_window:True|notes:\x5B"Export any measurements to a comma-delimited file (.csv). The measurements made for the nuclei, cell and cytoplasm objects will be saved to separate .csv files, in addition to the per-image .csv\'s."\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
-    Add image file and folder names to your object data file?:No
     Select the measurements to export:No
     Calculate the per-image mean values for object measurements?:Yes
     Calculate the per-image median values for object measurements?:No
     Calculate the per-image standard deviation values for object measurements?:No
-    Output file location:Default Output Folder|.
+    Output file location:Default Output Folder\x7C.
     Create a GenePattern GCT file?:No
     Select source of sample row name:Metadata
     Select the image to use as the identifier:None
     Select the metadata to use as the identifier:None
     Export all measurement types?:No
-    Press button to select measurements:None|None
+    Press button to select measurements:None\x7CNone
     Representation of Nan/Inf:NaN
     Add a prefix to file names?:No
     Filename prefix:MyExpt_

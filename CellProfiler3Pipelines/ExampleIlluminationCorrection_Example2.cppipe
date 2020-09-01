@@ -1,37 +1,35 @@
 CellProfiler Pipeline: http://www.cellprofiler.org
-Version:5
-DateRevision:400
+Version:3
+DateRevision:300
 GitHash:
 ModuleCount:11
 HasImagePlaneDetails:False
 
-Images:[module_num:1|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     :
     Filter images?:Images only
-    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "[\\\\\\\\/]\\\\.")
+    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "\x5B\\\\\\\\\\\\\\\\/\x5D\\\\\\\\.")
 
-Metadata:[module_num:2|svn_version:'Unknown'|variable_revision_number:6|show_window:False|notes:['The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Extract metadata?:No
     Metadata data type:Text
     Metadata types:{}
     Extraction method count:1
     Metadata extraction method:Extract from file/folder names
     Metadata source:File name
-    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>[A-P][0-9]{2})_s(?P<Site>[0-9])_w(?P<ChannelNumber>[0-9])
-    Regular expression to extract from folder name:(?P<Date>[0-9]{4}_[0-9]{2}_[0-9]{2})$
+    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)_w(?P<ChannelNumber>\x5B0-9\x5D)
+    Regular expression to extract from folder name:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
     Extract metadata from:All images
     Select the filtering criteria:and (file does contain "")
-    Metadata file location:Elsewhere...|
-    Match file and image metadata:[]
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
     Use case insensitive matching?:No
-    Metadata file name:
-    Does cached metadata exist?:No
 
-NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|show_window:False|notes:['The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.', 'â\x80\x94', 'The rule critieria specified will match one file only: â\x80\x94W00001â\x80\x94P00001â\x80\x94Z00000â\x80\x94T00000â\x80\x94cherry.tif']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:8|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\', \'\\xe2\\x80\\x94\', \'The rule critieria specified will match one file only\x3A \\xe2\\x80\\x94W00001\\xe2\\x80\\x94P00001\\xe2\\x80\\x94Z00000\\xe2\\x80\\x94T00000\\xe2\\x80\\x94cherry.tif\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Assign a name to:Images matching rules
     Select the image type:Grayscale image
     Name to assign these images:DNA
-    Match metadata:[]
+    Match metadata:\x5B\x5D
     Image set matching method:Order
     Set intensity range from:Image metadata
     Assignments count:1
@@ -48,12 +46,12 @@ NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|sho
     Set intensity range from:Image metadata
     Maximum intensity:255.0
 
-Groups:[module_num:4|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Do you want to group your images?:No
     grouping metadata count:1
     Metadata category:None
 
-IdentifyPrimaryObjects:[module_num:5|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:['Identify the well containing the worms.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'Identify the well containing the worms.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Grayscale
     Name the primary objects to be identified:UncorrectedNuclei
     Typical diameter of objects, in pixel units (Min,Max):20,50
@@ -69,10 +67,8 @@ IdentifyPrimaryObjects:[module_num:5|svn_version:'Unknown'|variable_revision_num
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Handling of objects if excessive number of objects identified:Continue
     Maximum number of objects:500
-    Display accepted local maxima?:No
-    Select maxima color:Blue
     Use advanced settings?:Yes
-    Threshold setting version:11
+    Threshold setting version:10
     Threshold strategy:Global
     Thresholding method:Otsu
     Threshold smoothing scale:1.3488
@@ -90,7 +86,7 @@ IdentifyPrimaryObjects:[module_num:5|svn_version:'Unknown'|variable_revision_num
     # of deviations:2.0
     Thresholding method:Otsu
 
-CorrectIlluminationCalculate:[module_num:6|svn_version:'Unknown'|variable_revision_number:2|show_window:True|notes:['In this instance, we are doing background correction with a small block size and median filtering. Note that the worms are still visible in the illumination function.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationCalculate:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'In this instance, we are doing background correction with a small block size and median filtering. Note that the worms are still visible in the illumination function.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Grayscale
     Name the output image:SmallBlockIllum
     Select how the illumination function is calculated:Background
@@ -115,15 +111,13 @@ CorrectIlluminationCalculate:[module_num:6|svn_version:'Unknown'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationApply:[module_num:7|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['Now apply the illumination function to the original image and examine the result.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationApply:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Now apply the illumination function to the original image and examine the result.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Grayscale
     Name the output image:SmallBlockCorrected
     Select the illumination function:SmallBlockIllum
     Select how the illumination function is applied:Subtract
-    Set output image values less than 0 equal to 0?:Yes
-    Set output image values greater than 1 equal to 1?:Yes
 
-IdentifyPrimaryObjects:[module_num:8|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:SmallBlockCorrected
     Name the primary objects to be identified:SmallBlockCorrectedNuclei
     Typical diameter of objects, in pixel units (Min,Max):20,50
@@ -139,10 +133,8 @@ IdentifyPrimaryObjects:[module_num:8|svn_version:'Unknown'|variable_revision_num
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Handling of objects if excessive number of objects identified:Continue
     Maximum number of objects:500
-    Display accepted local maxima?:No
-    Select maxima color:Blue
     Use advanced settings?:Yes
-    Threshold setting version:11
+    Threshold setting version:10
     Threshold strategy:Global
     Thresholding method:Otsu
     Threshold smoothing scale:1.3488
@@ -160,13 +152,13 @@ IdentifyPrimaryObjects:[module_num:8|svn_version:'Unknown'|variable_revision_num
     # of deviations:2.0
     Thresholding method:Otsu
 
-CorrectIlluminationCalculate:[module_num:9|svn_version:'Unknown'|variable_revision_number:2|show_window:True|notes:['In this instance, we are doing background correction with a larger block size and median filtering. This gets rid of the worm-like artifacts, but is still a bit blocky.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationCalculate:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'In this instance, we are doing background correction with a larger block size and median filtering. This gets rid of the worm-like artifacts, but is still a bit blocky.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Grayscale
     Name the output image:LargeBlockIllum
     Select how the illumination function is calculated:Background
     Dilate objects in the final averaged image?:No
     Dilation radius:1
-    Block size:20
+    Block size:8
     Rescale the illumination function?:No
     Calculate function for each image individually, or based on all images?:Each
     Smoothing method:Median Filter
@@ -185,15 +177,13 @@ CorrectIlluminationCalculate:[module_num:9|svn_version:'Unknown'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationApply:[module_num:10|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['Apply the illumination function to the original image and examine the result.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationApply:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Apply the illumination function to the original image and examine the result.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Grayscale
     Name the output image:LargeBlockCorrected
     Select the illumination function:LargeBlockIllum
     Select how the illumination function is applied:Subtract
-    Set output image values less than 0 equal to 0?:Yes
-    Set output image values greater than 1 equal to 1?:Yes
 
-IdentifyPrimaryObjects:[module_num:11|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:[]|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:LargeBlockCorrected
     Name the primary objects to be identified:LargeBlockCorrectedNuclei
     Typical diameter of objects, in pixel units (Min,Max):20,50
@@ -209,12 +199,10 @@ IdentifyPrimaryObjects:[module_num:11|svn_version:'Unknown'|variable_revision_nu
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Handling of objects if excessive number of objects identified:Continue
     Maximum number of objects:500
-    Display accepted local maxima?:No
-    Select maxima color:Blue
     Use advanced settings?:Yes
-    Threshold setting version:11
+    Threshold setting version:10
     Threshold strategy:Global
-    Thresholding method:Minimum Cross-Entropy
+    Thresholding method:Otsu
     Threshold smoothing scale:1.3488
     Threshold correction factor:1.0
     Lower and upper bounds on threshold:0.0,1.0

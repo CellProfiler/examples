@@ -27,7 +27,7 @@ Metadata:[module_num:2|svn_version:'Unknown'|variable_revision_number:6|show_win
     Metadata file name:
     Does cached metadata exist?:No
 
-NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|show_window:False|notes:['The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.', 'â\x80\x94', 'Load each channel (or stain) as a separate image.  If you have a color image composed of different stains, youâ\x80\x99ll need to specify the image type as â\x80\x98Color imageâ\x80\x99 and then use a ColorToGray module in the Analysis modula panel to separate the incoming image into its component channels.', '', 'In the example pipeline, we call the two images OrigStain1 and OrigStain2.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|show_window:False|notes:['The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.', 'âx80x94', 'Load each channel (or stain) as a separate image.  If you have a color image composed of different stains, youâx80x99ll need to specify the image type as âx80x98Color imageâx80x99 and then use a ColorToGray module in the Analysis modula panel to separate the incoming image into its component channels.', '', 'In the example pipeline, we call the two images OrigStain1 and OrigStain2.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Assign a name to:Images matching rules
     Select the image type:Grayscale image
     Name to assign these images:DNA
@@ -109,7 +109,7 @@ CorrectIlluminationCalculate:[module_num:6|svn_version:'Unknown'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationApply:[module_num:7|svn_version:'Unknown'|variable_revision_number:4|show_window:True|notes:['Apply the illumination function to the original images and examine the result.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationApply:[module_num:7|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['Apply the illumination function to the original images and examine the result.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:OrigStain1
     Name the output image:CorrectedStain1
     Select the illumination function:IllumStain1
@@ -118,7 +118,8 @@ CorrectIlluminationApply:[module_num:7|svn_version:'Unknown'|variable_revision_n
     Name the output image:CorrectedStain2
     Select the illumination function:IllumStain2
     Select how the illumination function is applied:Divide
-    Clip intensity values:No
+    Set output image values less than 0 equal to 0?:Yes
+    Set output image values greater than 1 equal to 1?:Yes
 
 Align:[module_num:8|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:['(Optional) Since accurate colocalization requires accurate positioning of the features in both images, it is sometimes worth using this module to align the images.', '', 'If aligning the images, it is important to remember that there needs to be sufficient overlap in image features, other than the features suspected of overlapping, in order to align them. For example, attempting to align two images in which there is little to no colocalization will probably result in poor alignment. ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the alignment method:Mutual Information
@@ -215,7 +216,7 @@ IdentifyPrimaryObjects:[module_num:11|svn_version:'Unknown'|variable_revision_nu
     # of deviations:2.0
     Thresholding method:Otsu
 
-RelateObjects:[module_num:12|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['If we want to consider objects which touch or overlap each other are considered to be colocalized, this module establishes a â\x80\x98parent-childâ\x80\x99 relationship between two sets of objects. A â\x80\x98parentâ\x80\x99 object is one that touches, overlaps or encloses a â\x80\x98childâ\x80\x99 object. Object2 objects that touch or overlap with an Object2 object are considered to be colocalized and will be assigned as a parent to a corresponding child.  All others have no children and are labeled accordingly.', '', 'In addition, the distance between object centroids may also be obtained with this module by enabling the â\x80\x98Calculate distances?â\x80\x99â\x80\x99 setting.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RelateObjects:[module_num:12|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['If we want to consider objects which touch or overlap each other are considered to be colocalized, this module establishes a âx80x98parent-childâx80x99 relationship between two sets of objects. A âx80x98parentâx80x99 object is one that touches, overlaps or encloses a âx80x98childâx80x99 object. Object2 objects that touch or overlap with an Object2 object are considered to be colocalized and will be assigned as a parent to a corresponding child.  All others have no children and are labeled accordingly.', '', 'In addition, the distance between object centroids may also be obtained with this module by enabling the âx80x98Calculate distances?âx80x99âx80x99 setting.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:Objects1
     Child objects:Objects2
     Calculate child-parent distances?:Centroid
@@ -223,6 +224,8 @@ RelateObjects:[module_num:12|svn_version:'Unknown'|variable_revision_number:5|sh
     Calculate distances to other parents?:No
     Do you want to save the children with parents as a new object set?:No
     Name the output object:None
+    Parent name:None
+    Parent name:None
     Parent name:None
     Parent name:None
     Parent name:None
@@ -264,6 +267,8 @@ RelateObjects:[module_num:17|svn_version:'Unknown'|variable_revision_number:5|sh
     Calculate distances to other parents?:No
     Do you want to save the children with parents as a new object set?:No
     Name the output object:None
+    Parent name:None
+    Parent name:None
     Parent name:None
     Parent name:None
     Parent name:None
@@ -318,7 +323,7 @@ FilterObjects:[module_num:19|svn_version:'Unknown'|variable_revision_number:8|sh
     Filter using a maximum measurement value?:No
     Maximum value:1.0
 
-MaskObjects:[module_num:20|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:['This module masks (i.e., â\x80\x98hidesâ\x80\x99 from consideration) the pixels of the Objects1 object set which are in common with the Objects2 object set. The result of this operation is the colocalized area as a new object set, named ColocalizedRegions ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+MaskObjects:[module_num:20|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:['This module masks (i.e., âx80x98hidesâx80x99 from consideration) the pixels of the Objects1 object set which are in common with the Objects2 object set. The result of this operation is the colocalized area as a new object set, named ColocalizedRegions ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select objects to be masked:Objects1
     Name the masked objects:ColocalizedRegion
     Mask using a region defined by other objects or by binary image?:Objects

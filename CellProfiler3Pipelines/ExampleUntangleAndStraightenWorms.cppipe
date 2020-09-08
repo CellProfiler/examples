@@ -1,37 +1,35 @@
 CellProfiler Pipeline: http://www.cellprofiler.org
-Version:5
-DateRevision:400
+Version:3
+DateRevision:300
 GitHash:
 ModuleCount:17
 HasImagePlaneDetails:False
 
-Images:[module_num:1|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Images:[module_num:1|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'To begin creating your project, use the Images module to compile a list of files and/or folders that you want to analyze. You can also specify a set of rules to include only the desired files in your selected folders.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     :
     Filter images?:Images only
-    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "[\\\\\\\\/]\\\\.")
+    Select the rule criteria:and (extension does isimage) (directory doesnot containregexp "\x5B\\\\\\\\\\\\\\\\/\x5D\\\\\\\\.")
 
-Metadata:[module_num:2|svn_version:'Unknown'|variable_revision_number:6|show_window:False|notes:['The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Metadata:[module_num:2|svn_version:\'Unknown\'|variable_revision_number:4|show_window:False|notes:\x5B\'The Metadata module optionally allows you to extract information describing your images (i.e, metadata) which will be stored along with your measurements. This information can be contained in the file name and/or location, or in an external file.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Extract metadata?:No
     Metadata data type:Text
     Metadata types:{}
     Extraction method count:1
     Metadata extraction method:Extract from file/folder names
     Metadata source:File name
-    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>[A-P][0-9]{2})_s(?P<Site>[0-9])_w(?P<ChannelNumber>[0-9])
-    Regular expression to extract from folder name:(?P<Date>[0-9]{4}_[0-9]{2}_[0-9]{2})$
+    Regular expression to extract from file name:^(?P<Plate>.*)_(?P<Well>\x5BA-P\x5D\x5B0-9\x5D{2})_s(?P<Site>\x5B0-9\x5D)_w(?P<ChannelNumber>\x5B0-9\x5D)
+    Regular expression to extract from folder name:(?P<Date>\x5B0-9\x5D{4}_\x5B0-9\x5D{2}_\x5B0-9\x5D{2})$
     Extract metadata from:All images
     Select the filtering criteria:and (file does contain "")
-    Metadata file location:Elsewhere...|
-    Match file and image metadata:[]
+    Metadata file location:
+    Match file and image metadata:\x5B\x5D
     Use case insensitive matching?:No
-    Metadata file name:
-    Does cached metadata exist?:No
 
-NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|show_window:False|notes:['The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.', 'â\x80\x94', 'Load bright-field (all worms, w1), GFP (signal of interest,w2) and mCherry (head marker, w3) images.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+NamesAndTypes:[module_num:3|svn_version:\'Unknown\'|variable_revision_number:8|show_window:False|notes:\x5B\'The NamesAndTypes module allows you to assign a meaningful name to each image by which other modules will refer to it.\', \'\\xe2\\x80\\x94\', \'Load bright-field (all worms, w1), GFP (signal of interest,w2) and mCherry (head marker, w3) images.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Assign a name to:Images matching rules
     Select the image type:Grayscale image
     Name to assign these images:DNA
-    Match metadata:[]
+    Match metadata:\x5B\x5D
     Image set matching method:Order
     Set intensity range from:Image metadata
     Assignments count:3
@@ -60,12 +58,12 @@ NamesAndTypes:[module_num:3|svn_version:'Unknown'|variable_revision_number:8|sho
     Set intensity range from:Image metadata
     Maximum intensity:255.0
 
-Groups:[module_num:4|svn_version:'Unknown'|variable_revision_number:2|show_window:False|notes:['The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Groups:[module_num:4|svn_version:\'Unknown\'|variable_revision_number:2|show_window:False|notes:\x5B\'The Groups module optionally allows you to split your list of images into image subsets (groups) which will be processed independently of each other. Examples of groupings include screening batches, microtiter plates, time-lapse movies, etc.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Do you want to group your images?:No
     grouping metadata count:1
     Metadata category:None
 
-CorrectIlluminationCalculate:[module_num:5|svn_version:'Unknown'|variable_revision_number:2|show_window:True|notes:['For brightfield data with dark well edges and bright illumination in the center of the image, the â\x80\x98ConvexHullâ\x80\x99 approach works well. For other variations in illumination, test one of the alternative methods.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationCalculate:[module_num:5|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'For brightfield data with dark well edges and bright illumination in the center of the image, the \\xe2\\x80\\x98ConvexHull\\xe2\\x80\\x99 approach works well. For other variations in illumination, test one of the alternative methods.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Worms
     Name the output image:Background
     Select how the illumination function is calculated:Regular
@@ -90,22 +88,19 @@ CorrectIlluminationCalculate:[module_num:5|svn_version:'Unknown'|variable_revisi
     Maximum number of iterations:40
     Residual value for convergence:0.001
 
-CorrectIlluminationApply:[module_num:6|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['Divide away the variation in illumination.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationApply:[module_num:6|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Divide away the variation in illumination.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:Worms
     Name the output image:IllumCorrWorms
     Select the illumination function:Background
     Select how the illumination function is applied:Divide
-    Set output image values less than 0 equal to 0?:Yes
-    Set output image values greater than 1 equal to 1?:Yes
 
-ImageMath:[module_num:7|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['Invert the image to make worms bright (foreground) and background dark.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+ImageMath:[module_num:7|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Invert the image to make worms bright (foreground) and background dark.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Operation:Invert
     Raise the power of the result by:1.0
     Multiply the result by:1.0
     Add to result:0.0
     Set values less than 0 equal to 0?:Yes
     Set values greater than 1 equal to 1?:Yes
-    Replace invalid values with 0?:Yes
     Ignore the image masks?:No
     Name the output image:WormsInverted
     Image or measurement?:Image
@@ -117,11 +112,11 @@ ImageMath:[module_num:7|svn_version:'Unknown'|variable_revision_number:5|show_wi
     Multiply the second image by:1.0
     Measurement:
 
-Threshold:[module_num:8|svn_version:'Unknown'|variable_revision_number:11|show_window:True|notes:['Apply an intensity threshold to define worms vs background. Adjust thresholding method and/or correction factor if the result of the thresholding does not separate foreground and background well. ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+Threshold:[module_num:8|svn_version:\'Unknown\'|variable_revision_number:10|show_window:True|notes:\x5B\'Apply an intensity threshold to define worms vs background. Adjust thresholding method and/or correction factor if the result of the thresholding does not separate foreground and background well. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:WormsInverted
     Name the output image:WormsBinary
     Threshold strategy:Global
-    Thresholding method:Otsu
+    Thresholding method:Minimum cross entropy
     Threshold smoothing scale:0.0
     Threshold correction factor:1.0
     Lower and upper bounds on threshold:0.0,1.0
@@ -137,12 +132,12 @@ Threshold:[module_num:8|svn_version:'Unknown'|variable_revision_number:11|show_w
     # of deviations:2.0
     Thresholding method:Otsu
 
-UntangleWorms:[module_num:9|svn_version:'Unknown'|variable_revision_number:2|show_window:True|notes:['This step untangles the worms using a provided WormModel. This worm model was built from a large number of samples of single worms. If the result of the untangling is not satisfactory, either create your own worm model based on your image data (see example pipeline), or adjust the provided worm model by opening it in a text editor and change settings for worm length, area etc. You may also want to adjust the â\x80\x98Maximum Complexityâ\x80\x99 which controlls how complex clusters the untangling will handle. Large clusters (>6 worms) may be slow to process.', '', 'For the training set file location, set this to the folder containing the file â\x80\x98WormModel.xmlâ\x80\x99']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+UntangleWorms:[module_num:9|svn_version:\'Unknown\'|variable_revision_number:2|show_window:True|notes:\x5B\'This step untangles the worms using a provided WormModel. This worm model was built from a large number of samples of single worms. If the result of the untangling is not satisfactory, either create your own worm model based on your image data (see example pipeline), or adjust the provided worm model by opening it in a text editor and change settings for worm length, area etc. You may also want to adjust the \\xe2\\x80\\x98Maximum Complexity\\xe2\\x80\\x99 which controlls how complex clusters the untangling will handle. Large clusters (>6 worms) may be slow to process.\', \'\', \'For the training set file location, set this to the folder containing the file \\xe2\\x80\\x98WormModel.xml\\xe2\\x80\\x99\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input binary image:WormsBinary
     Overlap style:Both
     Name the output overlapping worm objects:OverlappingWorms
     Name the output non-overlapping worm objects:NonOverlappingWorms
-    Training set file location:Default Input Folder|Bioimaging/ExamplePipelineStraighten
+    Training set file location:Default Input Folder\x7CBioimaging/ExamplePipelineStraighten
     Training set file name:WormModel.xml
     Use training set weights?:Yes
     Overlap weight:5.0
@@ -169,7 +164,7 @@ UntangleWorms:[module_num:9|svn_version:'Unknown'|variable_revision_number:2|sho
     Maximum complexity:Process all clusters
     Custom complexity:400
 
-OverlayOutlines:[module_num:10|svn_version:'Unknown'|variable_revision_number:4|show_window:True|notes:['Optional:This step is only for visualization of the untangling result. ']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+OverlayOutlines:[module_num:10|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Optional\x3AThis step is only for visualization of the untangling result. \'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Display outlines on a blank image?:No
     Select image on which to display outlines:Worms
     Name the output image:OrigOverlay
@@ -179,11 +174,11 @@ OverlayOutlines:[module_num:10|svn_version:'Unknown'|variable_revision_number:4|
     Select outline color:Red
     Select objects to display:OverlappingWorms
 
-StraightenWorms:[module_num:11|svn_version:'Unknown'|variable_revision_number:3|show_window:True|notes:['Worm straightening takes the result from untangling as input, and both straightens the worms and extracts intensity measurements. â\x80\x98Worm widthâ\x80\x99 should be adjusted as to cover the diameter of your worms. Feature extraction is however limited to the mask defined at untangling, and a wide worm width will not affect the result. For feature extraction using the low-resolution worm atlas, specify the number of transverse segments and longitudinal stripes for extraction of intensity measurements. The positioning of the segments will be adjusted to the length and width of the mask defining the worm, and thereby compensating for variations in length and width. Aslo select the images (here GFP and mCherry) from where to extract intensity measurements using the atlas.', '', 'For the training set file location, set this to the folder containing the file â\x80\x98WormModel.xmlâ\x80\x99']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+StraightenWorms:[module_num:11|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Worm straightening takes the result from untangling as input, and both straightens the worms and extracts intensity measurements. \\xe2\\x80\\x98Worm width\\xe2\\x80\\x99 should be adjusted as to cover the diameter of your worms. Feature extraction is however limited to the mask defined at untangling, and a wide worm width will not affect the result. For feature extraction using the low-resolution worm atlas, specify the number of transverse segments and longitudinal stripes for extraction of intensity measurements. The positioning of the segments will be adjusted to the length and width of the mask defining the worm, and thereby compensating for variations in length and width. Aslo select the images (here GFP and mCherry) from where to extract intensity measurements using the atlas.\', \'\', \'For the training set file location, set this to the folder containing the file \\xe2\\x80\\x98WormModel.xml\\xe2\\x80\\x99\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input untangled worm objects:NonOverlappingWorms
     Name the output straightened worm objects:StraightenedWorms
     Worm width:20
-    Training set file location:Default Input Folder|Bioimaging/ExamplePipelineStraighten
+    Training set file location:Default Input Folder\x7CBioimaging/ExamplePipelineStraighten
     Training set file name:WormModel.xml
     Image count:2
     Measure intensity distribution?:Yes
@@ -196,7 +191,7 @@ StraightenWorms:[module_num:11|svn_version:'Unknown'|variable_revision_number:3|
     Select an input image to straighten:GFP
     Name the output straightened image:Straightened_GFP
 
-IdentifyPrimaryObjects:[module_num:12|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:['Here we chose to also detect the head markers, by thresholding the mCherry image. For this type of spot-detection, a pre-processing step using â\x80\x98EnhanceOrSupressFeaturesâ\x80\x99 may improve the result.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:12|svn_version:\'Unknown\'|variable_revision_number:13|show_window:True|notes:\x5B\'Here we chose to also detect the head markers, by thresholding the mCherry image. For this type of spot-detection, a pre-processing step using \\xe2\\x80\\x98EnhanceOrSupressFeatures\\xe2\\x80\\x99 may improve the result.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:mCherry
     Name the primary objects to be identified:HeadMarkers
     Typical diameter of objects, in pixel units (Min,Max):5,40
@@ -212,10 +207,8 @@ IdentifyPrimaryObjects:[module_num:12|svn_version:'Unknown'|variable_revision_nu
     Automatically calculate minimum allowed distance between local maxima?:Yes
     Handling of objects if excessive number of objects identified:Continue
     Maximum number of objects:500
-    Display accepted local maxima?:No
-    Select maxima color:Blue
     Use advanced settings?:Yes
-    Threshold setting version:11
+    Threshold setting version:10
     Threshold strategy:Global
     Thresholding method:Manual
     Threshold smoothing scale:1.3488
@@ -233,20 +226,16 @@ IdentifyPrimaryObjects:[module_num:12|svn_version:'Unknown'|variable_revision_nu
     # of deviations:2.0
     Thresholding method:Otsu
 
-RelateObjects:[module_num:13|svn_version:'Unknown'|variable_revision_number:5|show_window:True|notes:['The detected head markers are associated with a particular worm using this module. No adjustments needed.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+RelateObjects:[module_num:13|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'The detected head markers are associated with a particular worm using this module. No adjustments needed.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Parent objects:NonOverlappingWorms
     Child objects:HeadMarkers
     Calculate child-parent distances?:None
     Calculate per-parent means for all child measurements?:No
     Calculate distances to other parents?:No
-    Do you want to save the children with parents as a new object set?:No
-    Name the output object:None
-    Parent name:None
     Parent name:None
 
-GrayToColor:[module_num:14|svn_version:'Unknown'|variable_revision_number:4|show_window:True|notes:['Optional: This is for visual comparison of the straightened worms and can be omitted.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+GrayToColor:[module_num:14|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Optional\x3A This is for visual comparison of the straightened worms and can be omitted.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select a color scheme:RGB
-    Rescale intensity:No
     Select the image to be colored red:Straightened_mCherry
     Select the image to be colored green:Straightened_GFP
     Select the image to be colored blue:Leave this black
@@ -267,9 +256,8 @@ GrayToColor:[module_num:14|svn_version:'Unknown'|variable_revision_number:4|show
     Color:#ff0000
     Weight:1.0
 
-GrayToColor:[module_num:15|svn_version:'Unknown'|variable_revision_number:4|show_window:True|notes:['Optional: This is also for visualization of the detected objects overlaied on the combined GFP and mCherry image.', 'Right-click on output image to rescal image contrast to â\x80\x98Log normalizedâ\x80\x99 if signals are difficult to see.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+GrayToColor:[module_num:15|svn_version:\'Unknown\'|variable_revision_number:3|show_window:True|notes:\x5B\'Optional\x3A This is also for visualization of the detected objects overlaied on the combined GFP and mCherry image.\', \'Right-click on output image to rescal image contrast to \\xe2\\x80\\x98Log normalized\\xe2\\x80\\x99 if signals are difficult to see.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select a color scheme:RGB
-    Rescale intensity:No
     Select the image to be colored red:mCherry
     Select the image to be colored green:GFP
     Select the image to be colored blue:Leave this black
@@ -290,7 +278,7 @@ GrayToColor:[module_num:15|svn_version:'Unknown'|variable_revision_number:4|show
     Color:#ff0000
     Weight:1.0
 
-OverlayOutlines:[module_num:16|svn_version:'Unknown'|variable_revision_number:4|show_window:True|notes:['Otional: This step is only for visualization of the result and can be omitted.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+OverlayOutlines:[module_num:16|svn_version:\'Unknown\'|variable_revision_number:4|show_window:True|notes:\x5B\'Otional\x3A This step is only for visualization of the result and can be omitted.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Display outlines on a blank image?:No
     Select image on which to display outlines:OrigRG
     Name the output image:OrigOverlay
@@ -302,21 +290,20 @@ OverlayOutlines:[module_num:16|svn_version:'Unknown'|variable_revision_number:4|
     Select outline color:green
     Select objects to display:HeadMarkers
 
-ExportToSpreadsheet:[module_num:17|svn_version:'Unknown'|variable_revision_number:13|show_window:True|notes:['Here, intensity measurements using the worm atlas as well as marker counts are exported to a spreadsheet. One can chose to export all data, or as here, ony export a subset of the measurements taken. The resulting csv-files can be opened in a text editor or e.g. Excel.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+ExportToSpreadsheet:[module_num:17|svn_version:\'Unknown\'|variable_revision_number:12|show_window:True|notes:\x5B\'Here, intensity measurements using the worm atlas as well as marker counts are exported to a spreadsheet. One can chose to export all data, or as here, ony export a subset of the measurements taken. The resulting csv-files can be opened in a text editor or e.g. Excel.\'\x5D|batch_state:array(\x5B\x5D, dtype=uint8)|enabled:True|wants_pause:False]
     Select the column delimiter:Comma (",")
     Add image metadata columns to your object data file?:No
-    Add image file and folder names to your object data file?:No
     Select the measurements to export:Yes
     Calculate the per-image mean values for object measurements?:No
     Calculate the per-image median values for object measurements?:No
     Calculate the per-image standard deviation values for object measurements?:No
-    Output file location:Default Output Folder|
+    Output file location:Default Output Folder\x7C
     Create a GenePattern GCT file?:No
     Select source of sample row name:Metadata
     Select the image to use as the identifier:None
     Select the metadata to use as the identifier:None
     Export all measurement types?:No
-    Press button to select measurements:Image|FileName_GFP,Image|FileName_mCherry,Image|FileName_Worms,NonOverlappingWorms|Worm_StdIntensity_Straightened_GFP_T1of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_GFP_T2of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_GFP_T3of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_GFP_T4of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_GFP_T5of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_mCherry_T1of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_mCherry_T2of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_mCherry_T3of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_mCherry_T4of5_L1of1,NonOverlappingWorms|Worm_StdIntensity_Straightened_mCherry_T5of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_GFP_T1of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_GFP_T2of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_GFP_T3of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_GFP_T4of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_GFP_T5of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_mCherry_T1of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_mCherry_T2of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_mCherry_T3of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_mCherry_T4of5_L1of1,NonOverlappingWorms|Worm_MeanIntensity_Straightened_mCherry_T5of5_L1of1,NonOverlappingWorms|Children_HeadMarkers_Count
+    Press button to select measurements:Image\x7CFileName_GFP,Image\x7CFileName_mCherry,Image\x7CFileName_Worms,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T1of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T2of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T3of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T4of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_GFP_T5of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T1of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T2of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T3of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T4of5_L1of1,NonOverlappingWorms\x7CWorm_StdIntensity_Straightened_mCherry_T5of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T1of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T2of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T3of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T4of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_GFP_T5of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T1of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T2of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T3of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T4of5_L1of1,NonOverlappingWorms\x7CWorm_MeanIntensity_Straightened_mCherry_T5of5_L1of1,NonOverlappingWorms\x7CChildren_HeadMarkers_Count
     Representation of Nan/Inf:NaN
     Add a prefix to file names?:No
     Filename prefix:MyExpt_

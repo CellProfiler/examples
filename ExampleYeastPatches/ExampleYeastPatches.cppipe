@@ -94,7 +94,7 @@ ColorToGray:[module_num:6|svn_version:'Unknown'|variable_revision_number:4|show_
     Relative weight of the channel:1.0
     Image name:Channel1
 
-CorrectIlluminationCalculate:[module_num:7|svn_version:'Unknown'|variable_revision_number:2|show_window:True|notes:['The illumination is not uneven and the yeast patches sit on an agar plate that has background signal. The CorrectIlluminationCalculate module will “filter out” the patches and measure the background. The convex hull smoothing method works well with the masked image and reflects the natural contours of uneven illumination.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+CorrectIlluminationCalculate:[module_num:7|svn_version:'Unknown'|variable_revision_number:2|show_window:True|notes:['The illumination is not uneven and the yeast patches sit on an agar plate that has background signal. The CorrectIlluminationCalculate module will "filter out" the patches and measure the background. The convex hull smoothing method works well with the masked image and reflects the natural contours of uneven illumination.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:CropGray
     Name the output image:Illumgray
     Select how the illumination function is calculated:Background
@@ -132,7 +132,7 @@ Closing:[module_num:9|svn_version:'Unknown'|variable_revision_number:1|show_wind
     Name the output image:ClosingGray
     Structuring element:disk,5
 
-IdentifyPrimaryObjects:[module_num:10|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:['The yeast patches will be segmented, but, despite cropping the image, there will still be plate edges that get segmented, too. Therefore, any object will be referred to as a “pre-spot” that will next be filtered to remove artifactual objects.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:10|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:['The yeast patches will be segmented, but, despite cropping the image, there will still be plate edges that get segmented, too. Therefore, any object will be referred to as a "pre-spot" that will next be filtered to remove artifactual objects.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:ClosingGray
     Name the primary objects to be identified:Prespots
     Typical diameter of objects, in pixel units (Min,Max):20,80

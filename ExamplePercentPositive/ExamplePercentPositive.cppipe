@@ -96,7 +96,7 @@ IdentifyPrimaryObjects:[module_num:5|svn_version:'Unknown'|variable_revision_num
     # of deviations:2.0
     Thresholding method:Otsu
 
-IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:['The phosphorylated histone probe is a marker for detecting mitotic cells. By segmenting this channel, a threshold is automatically chosen that identifies the pixels that are “positive” for the PH3 probe. This method will yield inconsistent results if there are no mitotic cells in view, so a minimum threshold value is chosen. This minimum is chosen hueristically, based upon the threshold chosen by this module, e.g. half the chosen threshold.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_number:14|show_window:True|notes:['The phosphorylated histone probe is a marker for detecting mitotic cells. By segmenting this channel, a threshold is automatically chosen that identifies the pixels that are "positive" for the PH3 probe. This method will yield inconsistent results if there are no mitotic cells in view, so a minimum threshold value is chosen. This minimum is chosen hueristically, based upon the threshold chosen by this module, e.g. half the chosen threshold.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input image:OrigGreen
     Name the primary objects to be identified:PH3
     Typical diameter of objects, in pixel units (Min,Max):5,20

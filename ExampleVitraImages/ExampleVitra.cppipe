@@ -131,7 +131,7 @@ IdentifyPrimaryObjects:[module_num:6|svn_version:'Unknown'|variable_revision_num
     # of deviations:2
     Thresholding method:Otsu
 
-IdentifySecondaryObjects:[module_num:7|svn_version:'Unknown'|variable_revision_number:10|show_window:True|notes:['Identify the cells by using the nuclei as a “seed” region, then growing outwards until stopped by the image threshold or by a neighbor. The Distance-B method is used to delineate the boundary between neighboring cells.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
+IdentifySecondaryObjects:[module_num:7|svn_version:'Unknown'|variable_revision_number:10|show_window:True|notes:['Identify the cells by using the nuclei as a "seed" region, then growing outwards until stopped by the image threshold or by a neighbor. The Distance-B method is used to delineate the boundary between neighboring cells.']|batch_state:array([], dtype=uint8)|enabled:True|wants_pause:False]
     Select the input objects:Nuclei
     Name the objects to be identified:Cells
     Select the method to identify the secondary objects:Distance - B
